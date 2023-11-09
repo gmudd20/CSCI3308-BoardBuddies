@@ -15,7 +15,6 @@ Application Name:
 Colorado PowderPro
 
 Application Description:
-
 An application that will provide users with a tool to help decide which ski resorts and runs are the right choice for them! In order to accomplish this, the user will specify certain criteria about themselves as a skier/snowboarder and then the app will filter out the best resort and the best runs for that user to go on. 
 More specifically, the user will be able to insert what type of pass they own (Ikon, or Epic), and on the main page, they will be able to view the mountains and information about those mountains that are on their specific pass. Additionally, the user will be able to view mountains and info about those mountains that are not on their pass as well. This will allow the user to discover more information about other resorts if they would like to plan a day trip or buy another pass.
 In addition to the features above, the user will also be able to read and write reviews on resorts and runs for specific mountains. This will provide the user with additional information about runs that might not be provided by the database, as well as get a second opinion from people who have actually visited that resort/run.
@@ -24,7 +23,7 @@ Vision Statement:
 For skiers/snowboarders who are new to the sport, new to the area, or just looking to find new mountains and trails. Colorado PowderPro is an application that will provide users with a tool to help them decide which ski resorts and runs are the right fit for them. 
 
 Version Control:
-https://github.com/idudney/3308-Final-Project-Team-5.git 
+https://github.com/gmudd20/CSCI3308-BoardBuddies
 
 Development Methodology:
 Agile scrum
