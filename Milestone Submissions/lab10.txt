@@ -1,0 +1,43 @@
+Team Number:
+Group 5
+
+Team Name:
+Board Buddies
+
+Team Members:
+Jenna Jones
+Alex Ulrich
+Grace Mudd
+Isabel Dudney
+Caleb Anderson
+
+Application Name:
+Colorado PowderPro
+
+Application Description:
+
+
+Vision Statement:
+Target Audience: New skiers, skiers new to Colorado, and skiers looking to find new mountains/trails
+
+Version Control:
+
+
+Development Methodology:
+
+Communication Plan:
+We will meet Tuesday at 1:00 PM in CSEL. Communication will be through text message and email.
+
+Meeting Plan:
+We will be meeting with Bhoomika Singla at 5:30-5:45 PM on Wednesday, November 8th.
+
+Use Case Diagram:
+Site User: Login, Input search criteria, make a profile, view ski trails
+Webmaster: Post trails to page, create user
+
+Wireframes:
+
+
+
+
+
