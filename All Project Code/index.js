@@ -100,7 +100,7 @@ app.post('/login', async (req, res) => {
           //save user details in session
           req.session.user = user;
           req.session.save();
-          res.redirect('/discover'); 
+         // res.redirect('/discover'); 
       }
       else{
           // console.log('Incorrect username or password.');
