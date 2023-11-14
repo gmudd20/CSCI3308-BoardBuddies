@@ -29,11 +29,11 @@ describe('Server!', () => {
 
 //We are checking POST /add_user API by passing the user info in the correct order. This test case should pass and return a status 200 along with a "Success" message.
 //Positive cases
-it('positive : /add_user', done => {
+it('positive : /login', done => {
     chai
       .request(server)
-      .post('/add_user')
-      .send({user_name: 'John Doe', pass: 'epic', skill_level: 1})
+      .post('/login')
+      .send({username: 'John Doe', password: 'password5'})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Success');
@@ -41,11 +41,11 @@ it('positive : /add_user', done => {
       });
   });
   //We are checking POST /add_user API by passing the user info in in incorrect manner (name cannot be an integer). This test case should pass and return a status 200 along with a "Invalid input" message.
-it('Negative : /add_user. Checking invalid name', done => {
+it('Negative : /addlogin. Checking invalid login', done => {
     chai
       .request(server)
-      .post('/add_user')
-      .send({user_name: 10, pass: 15, skill_level: "fifteen"})
+      .post('/login')
+      .send({username: 'Not John', password: 'badpassword5'})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Invalid input');
