@@ -33,7 +33,7 @@ it('positive : /add_user', done => {
     chai
       .request(server)
       .post('/add_user')
-      .send({id: 5, name: 'John Doe', dob: '2020-02-20'})
+      .send({user_name: 'John Doe', pass: 'epic', skill_level: 1})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Success');
@@ -45,7 +45,7 @@ it('Negative : /add_user. Checking invalid name', done => {
     chai
       .request(server)
       .post('/add_user')
-      .send({id: '5', name: 10, dob: '2020-02-20'})
+      .send({user_name: 10, pass: 15, skill_level: "fifteen"})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Invalid input');

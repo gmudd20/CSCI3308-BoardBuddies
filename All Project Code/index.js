@@ -117,8 +117,28 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/logout', (req, res) => {
-  res.render('pages/login', {message: 'Logged out successfully'})
+app.post('/add_user', function (req, res) {
+  const query =
+    'insert into users (user_name, pass, skill_level) values ($1, $2, $3)  returning * ;';
+  db.any(query, [
+    req.body.user_name,
+    req.body.pass,
+    req.body.skill_level,
+  ])
+    // if query execution succeeds
+    // send success message
+    .then(function (data) {
+      res.status(201).json({
+        status: 'success',
+        data: data,
+        message: 'data added successfully',
+      });
+    })
+    // if query execution fails
+    // send error message
+    .catch(function (err) {
+      return console.log(err);
+    });
 });
 
 
