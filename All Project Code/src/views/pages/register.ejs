@@ -1,0 +1,16 @@
+<%- include ('../partials/head') %>
+<!-- <%- include ('../partials/menu') %> -->
+
+<main>
+  <div class="container">
+    <form action="/register" method="POST"><br>
+      <label for="username">Username: </label><br>
+      <input type="text" id="username" name="username"><br>
+      <label for="password">Password: </label><br>
+      <input type="password" id="password" name="password">
+      <button  type="submit">Register</button>
+    </form>
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>
