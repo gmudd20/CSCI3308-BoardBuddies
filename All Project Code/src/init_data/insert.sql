@@ -333,3 +333,7 @@ insert into resorts_to_lifts(resort_id, lift_id) values (3, 36);
 insert into resorts_to_lifts(resort_id, lift_id) values (3, 37);
 insert into resorts_to_lifts(resort_id, lift_id) values (3, 38);
 insert into resorts_to_lifts(resort_id, lift_id) values (3, 39);
+
+--Test inserts
+
+insert into users (user_name, password, pass, skill_level) values ('John Doe', 'password5', 'epic', 1)
