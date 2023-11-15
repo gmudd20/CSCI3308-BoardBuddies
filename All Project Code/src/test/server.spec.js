@@ -25,15 +25,14 @@ describe('Server!', () => {
 
   // ===========================================================================
   // TO-DO: Part A Login unit test case
-});
 
-//We are checking POST /add_user API by passing the user info in the correct order. This test case should pass and return a status 200 along with a "Success" message.
-//Positive cases
-it('positive : /add_user', done => {
+  //We are checking POST /add_user API by passing the user info in the correct order. This test case should pass and return a status 200 along with a "Success" message.
+  //Positive cases
+  it('positive : /login', done => {
     chai
       .request(server)
-      .post('/add_user')
-      .send({id: 5, name: 'John Doe', dob: '2020-02-20'})
+      .post('/login')
+      .send({username: 'John Doe', password: 'password5'})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Success');
@@ -41,14 +40,42 @@ it('positive : /add_user', done => {
       });
   });
   //We are checking POST /add_user API by passing the user info in in incorrect manner (name cannot be an integer). This test case should pass and return a status 200 along with a "Invalid input" message.
-it('Negative : /add_user. Checking invalid name', done => {
+  it('Negative : /login. Checking invalid login', done => {
     chai
       .request(server)
-      .post('/add_user')
-      .send({id: '5', name: 10, dob: '2020-02-20'})
+      .post('/login')
+      .send({username: 'Not John', password: 'badpassword5'})
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equals('Invalid input');
         done();
       });
   });
+
+
+  // register
+  it('positive : /register. Checking for unique username', done => {
+  chai
+    .request(server)
+    .post('/register')
+    .send({username: 'Jane Doe', password: 'password4'})
+    .end((err, res) => {
+      expect(res).to.have.status(200);
+      expect(res.body.message).to.equals('Success');
+      done();
+    });
+  });
+  it('Negative : /register. Checking duplicate register', done => {
+  chai
+    .request(server)
+    .post('/register')
+    .send({username: 'Jane Doe', password: 'password4'})
+    .end((err, res) => {
+      expect(res).to.have.status(200);
+      expect(res.body.message).to.equals('Duplicate Register');
+      done();
+    });
+  });
+
+
+});
