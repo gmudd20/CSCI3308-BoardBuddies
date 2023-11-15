@@ -1,8 +1,5 @@
 ﻿11/15/2023
 
-
-
-
 Here are the updates we have made since Thursday of last lab:
 * Create.sql
    * We decided on what tables to create and what foreign keys were needed to connect these in order to set us up for success when we create our queries in our API calls
