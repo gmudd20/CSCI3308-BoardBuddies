@@ -1,0 +1,42 @@
+** The test plans should include specific test cases (user acceptance test cases) 
+** that describe the data and the user activity that will be executed in order to verify proper functionality of the feature.
+
+-- Test 1. Login)
+* Description of the test data that will be used to test the feature.
+    Unique username and password are required test the login page.
+* Description of the test environment that will be used to test the feature.
+    The environment is a docker virtual environment that displays the login page.
+* Description of the test results that will be used to test the feature.
+    We need to ensure the login page only accepts pre-existing users that have entered the correct password.
+    If login is successful, the user will be directed to the "your mountains" page that contains a list of all the mountains on your pass. 
+    If the login is not successful and the database contains the user, we will tell the user that they entered the wrong username and password.
+    If the login is not successful and the database had an error, we will display an error and redirect the user to the login page again.
+* Information about the user acceptance testers.
+    The system must redirect the user to the correct pages
+    The system must show the correct the error messages
+
+
+-- Test 2. Register)
+* Description of the test data that will be used to test the feature.
+    Unique username and password are required test the register page
+* Description of the test environment that will be used to test the feature.
+    The environment is a docker virtual environment that displays the register page.
+* Description of the test results that will be used to test the feature.
+    The register page redirects the user to the login page once their login is successful
+    If the username the user is inputting is already taken, we notify the user and have them input a valid username
+* Information about the user acceptance testers.
+    The system must redirect the user to the correct pages
+    The system must show the correct the error messages
+
+-- Test 3. Displaying the mountains best fit to user)
+    The feature should properly display only the mountains that fits what pass they put on their profile    
+* Description of the test data that will be used to test the feature.
+    We are going to use examples of users that have different passes selected
+* Description of the test environment that will be used to test the feature.
+    The environment is a docker virtual environment that displays the "Your mountains" and "Other Options" page 
+* Description of the test results that will be used to test the feature.
+    The correct mountains are displayed for users with different passes
+    All the correct data is shown for each mountain
+* Information about the user acceptance testers.
+    The dropdown menu expands and collapses
+    The dropdown displays all mountains and the correct information for them
