@@ -1334,13 +1334,13 @@ insert into resorts_to_lifts(resort_id,lift_id) values (9,100);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
-    (221, 'Bliss', 1),
-    (222, 'Intuition', 1),
-    (223, 'Reverie', 1),
-    (224, 'Daydream', 1),
-    (225, 'Nirvana', 1),
-    (226, 'Euphoria', 1),
-    (227, 'Delirium', 1);
+    (221, 'Bliss', 2),
+    (222, 'Intuition', 2),
+    (223, 'Reverie', 2),
+    (224, 'Daydream', 3),
+    (225, 'Nirvana', 3),
+    (226, 'Euphoria', 3),
+    (227, 'Delirium', 3);
 
 INSERT INTO lifts_to_runs (lift_id, run_id)
 VALUES 
@@ -1363,45 +1363,227 @@ VALUES
     (9, 227);
 
 -- Keystone
-
+-- Summit express
 insert into lifts(lift_id,lift_name) values (101,"Summit Express");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,101);
 
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (228, 'Spring Dipper', 2),
+    (229, 'Santa Fe', 2),
+    (230, 'Whipsaw', 2),
+    (231, 'Bachelor', 2),
+    (232, 'Frenchman', 2);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 228),
+    (10, 229),
+    (10, 230),
+    (10, 231),
+    (10, 232);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (101, 228),
+    (101, 229),
+    (101, 230),
+    (101, 231),
+    (101, 232);
+
+-- River Run
 insert into lifts(lift_id,lift_name) values (102,"River Run");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,102);
 
+-- Argintine
 insert into lifts(lift_id,lift_name) values (103,"Argintine");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,103);
 
+-- Montezuma
 insert into lifts(lift_id,lift_name) values (104,"Montezuma");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,104);
 
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (233, 'School marm', 1),
+    (234, 'Ski-daddle', 1),
+    (235, 'Endeavor', 1),
+    (236, 'Paymaster', 2),
+    (237, 'Isabelle', 3),
+    (238, 'Silver Spoon', 1);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (104, 233),
+    (104, 234),
+    (104, 235),
+    (104, 236),
+    (104, 237),
+    (104, 238);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 233),
+    (10, 234),
+    (10, 235),
+    (10, 236),
+    (10, 237),
+    (10, 238);
+
+-- Peru
 insert into lifts(lift_id,lift_name) values (105,"Peru");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,105);
 
-insert into lifts(lift_id,lift_name) values (106,"Discovery");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,106);
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (239, 'Acapulco road', 1),
+    (240, 'I-70', 1),
+    (241, 'Go Devil', 3),
+    (242, 'Richter', 3),
+    (243, 'Park Lane', 2);
 
-insert into lifts(lift_id,lift_name) values (107,"A-51");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,107);
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 239),
+    (10, 240),
+    (10, 241),
+    (10, 242),
+    (10, 243);
 
-insert into lifts(lift_id,lift_name) values (108,"Ranger");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,108);
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (105, 239),
+    (105, 240),
+    (105, 241),
+    (105, 242),
+    (105, 243);
 
-insert into lifts(lift_id,lift_name) values (109,"Ruby");
+-- Ruby
+insert into lifts(lift_id,lift_name) values (106,"Ruby");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
 
-insert into lifts(lift_id,lift_name) values (110,"Outpost");
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (244, 'Mozart', 1),
+    (245, 'Mine Shaft', 1),
+    (246, 'Diamond Back', 1);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 244),
+    (10, 245),
+    (10, 246);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (106, 244),
+    (106, 245),
+    (106, 246);
+
+-- outback
+insert into lifts(lift_id,lift_name) values (107,"OutBack");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
 
-insert into lifts(lift_id,lift_name) values (111,"Wayback");
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (247, 'Oh Bob', 2),
+    (248, 'Elk Run', 2),
+    (249, 'Bighorn', 2),
+    (250, 'Porcupine', 2),
+    (251, 'Pika Glades', 3),
+    (252, 'Wildfire', 3),
+    (253, 'Wolverine', 3),
+    (254, 'The Grizz', 3),
+    (255, 'Badger', 3),
+    (256, 'Bushwhacker', 3);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 247),
+    (10, 248),
+    (10, 249),
+    (10, 250),
+    (10, 251),
+    (10, 252),
+    (10, 253),
+    (10, 254),
+    (10, 255),
+    (10, 256);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (107, 247),
+    (107, 248),
+    (107, 249),
+    (107, 250),
+    (107, 251),
+    (107, 252),
+    (107, 253),
+    (107, 254),
+    (107, 255),
+    (107, 256);
+
+-- Wayback
+insert into lifts(lift_id,lift_name) values (108,"Wayback");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,111);
 
-insert into lifts(lift_id,lift_name) values (112,"Sandiago");
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (257, 'Spillway', 1),
+    (258, 'Anticipation', 1),
+    (259, 'Coyote Caper', 1);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 257),
+    (10, 258),
+    (10, 259);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (108, 257),
+    (108, 258),
+    (108, 259);
+
+-- Santiago
+insert into lifts(lift_id,lift_name) values (109,"Santiago");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,112);
 
-insert into lifts(lift_id,lift_name) values (113,"Outback");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,113);
+INSERT INTO runs (run_id, run_name, skill_level)
+VALUES 
+    (260, 'Startfire', 1),
+    (261, 'Geronimo', 1),
+    (262, 'Cat Dancer', 1),
+    (263, 'Cat south glades', 1),
+    (264, 'Ambush', 1),
+    (265, 'Powder Cap', 1),
+    (266, 'Last Alamo', 1),
+    (267, 'Prospector', 1),
+    (268, 'Bullet', 1);
+
+INSERT INTO lifts_to_runs (lift_id, run_id)
+VALUES 
+    (109, 260),
+    (109, 261),
+    (109, 262),
+    (109, 263),
+    (109, 264),
+    (109, 265),
+    (109, 266),
+    (109, 267),
+    (109, 268);
+
+INSERT INTO resorts_to_runs (resort_id, run_id)
+VALUES 
+    (10, 260),
+    (10, 261),
+    (10, 262),
+    (10, 263),
+    (10, 264),
+    (10, 265),
+    (10, 266),
+    (10, 267),
+    (10, 268),
 
 
 
