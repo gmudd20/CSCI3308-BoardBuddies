@@ -1,0 +1,37 @@
+﻿11/15/2023
+
+Here are the updates we have made since Thursday of last lab:
+* Create.sql
+   * We decided on what tables to create and what foreign keys were needed to connect these in order to set us up for success when we create our queries in our API calls
+   * Grace and Isabel
+* Insert.sql
+   * Started our database. This is definitely the most lengthy part besides figuring out why our website isn't working. This will probably be the most lengthy part of the project, but not the most difficult
+   * Grace and Isabel
+* Nav bar
+   * Created our navbar and what we wanted in it. Goes hand in hand with what we want on our websites
+   * Alex ulrich
+* Created the final layout for our project
+   * As said above, we finalized what we wanted. We even decided against a reviews page as we thought it would be redundant and not needed
+   * All of us
+* Started header and footer
+   * This should be done soon. We just don't know what profiles we should necessarily put at the bottom for links
+   * Jenna and Alex
+* Started pages (login, register, your mountains, about us, etc), which is the ejs lab
+   * Caleb and Alex
+* Index.js -
+   * Definitely have been struggling with this the most as our code was not compiling for a long tie
+   * Jenna, we all helped debug in order to get our website running
+None of these are necessarily bug fixes as we haven’t run into one. One bug fix is our index.js and docker-compose as this wouldn’t run when we tried to access our website.
+
+
+
+Our questions about env:
+In our git ignore, but do we still have to push it?
+Our plans for the next week:
+* Caleb: to finish pages and put these up to be able to work, adding some ejs for functionality
+* Alex: same idea as Caleb, they will discuss which pages each one will do 
+* Jenna: about us page, your mountain page, and other options pages with some ejs too
+* Isabel: CSS files to finalize our website, index js for login and register
+* Grace: edit our index.js for users viewing(what mountains based off pass, what runs, and sorting these) and update as people edit their files to accommodate changes for our website
+Below is the automated release notes created from github to show all of our changes:
+Full Changelog: https://github.com/gmudd20/CSCI3308-BoardBuddies/commits/Week2Automated
