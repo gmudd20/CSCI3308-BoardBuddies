@@ -1,0 +1,10 @@
+﻿* We started our database, set up our index js, and created our UI with the pages we wanted to create
+* Bhoomika will check back with us about uploading out .env as that was a question we had
+* Alex asked about testing and how much we should have for week 4
+* We have two containers in our docker 
+* We didn’t show any code as our big focus was our database so we didn’t have much functionality yet for our code
+* Grace: create sql, insert.sql is what she did in the past week and she also made the deliverable and updated the project board. Next week her job is to do part of the index.js that is not login and register
+* Isabel: create.sql and insert.sql. She helped a lot with the UAT. Her job this week is to create CSS and do the login and register part of index.js
+* Jenna: header, footer, set up of index.js, and she sat with a TA to figure out why our code wasn’t working and what to fix in the index. She helped a lot with the testing for lab 11. Her job is to update and make sure the about us page, your mountain page, and other options pages with some ejs too
+* Caleb: Framework of the pages and getting it all set up. This week his job is to do the front work. So he has to check all the tables set up and work correctly in order to create a good UI for the users.
+* Alex: This week he completed the nav bar for the main two pages. Contributed to the header and he made some of the updates to our pages. He also helped make sure our tests worked for lab 11. He went to a TA on wednesday to get this all up  and running. This week he is working with Caleb to fix our partials and create a good UIll.
