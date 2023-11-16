@@ -1129,7 +1129,7 @@ insert into resorts_to_lifts(resort_id,lift_id) values (9,90);
 
 insert into runs(run_id,run_name,skill_level)
 values
-    (187,'Trygve's',1),
+    (187,'Trygves',1),
     (188,'Dyersville',1),
     (189,'Twister',1);
 INSERT INTO resorts_to_runs (resort_id, run_id)
@@ -1206,7 +1206,7 @@ VALUES
     (201, 'Easy Street', 4),
     (202, '9 Lives', 4),
     (203, 'Zoot Chute', 4),
-    (204, 'Wacky's Chute', 4);
+    (204, 'Wackys Chute', 4);
 
 INSERT INTO lifts_to_runs (lift_id, run_id)
 VALUES 
