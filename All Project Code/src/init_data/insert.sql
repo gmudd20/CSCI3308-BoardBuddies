@@ -658,45 +658,189 @@ insert into resorts_to_lifts(resort_id,lift_id) values (7,56);
 insert into lifts(lift_id,lift_name) values (57,"Golden Peak");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,57);
 
+insert into runs(run_id,run_name,skill_level) values (100, "Slalom Alley", 3);
+insert into runs(run_id,run_name,skill_level) values (102, "Fall Line", 3);
+insert into runs(run_id,run_name,skill_level) values (103, "Golden Peak Race", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 100);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 101);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 102);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (57, 100);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (57, 101);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (57, 102);
+
 -- highline express
 insert into lifts(lift_id,lift_name) values (58,"Highline");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,58);
+
+insert into runs(run_id,run_name,skill_level) values (103, "Highline", 4);
+insert into runs(run_id,run_name,skill_level) values (104, "Blue Ox", 3);
+insert into runs(run_id,run_name,skill_level) values (105, "Rogers Run", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 103);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 104);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 105);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (58, 103);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (58, 104);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (58, 105);
+
+
 -- Riva Bahn Express
 insert into lifts(lift_id,lift_name) values (59,"River Bahn");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,59);
+
 -- Sourdough Express
 insert into lifts(lift_id,lift_name) values (60,"Sourdough");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,60);
+
+insert into runs(run_id,run_name,skill_level) values (106, "Boomer", 1);
+insert into runs(run_id,run_name,skill_level) values (107, "Sourdough", 1);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 106);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 107);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (60, 105);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (60, 106);
+
 -- Northwoods express
 insert into lifts(lift_id,lift_name) values (61,"Northwoods");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,61);
+
+insert into runs(run_id,run_name,skill_level) values (108, "South Rim", 3);
+insert into runs(run_id,run_name,skill_level) values (109, "North Rim", 3);
+insert into runs(run_id,run_name,skill_level) values (110, "Northstar", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 108);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 109);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 110);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (61, 108);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (61, 109);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (61, 110);
+
 -- Gopher hill
 insert into lifts(lift_id,lift_name) values (62,"Gopher Hill");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,62);
+
+insert into runs(run_id,run_name,skill_level) values (111, "Gopher Hill", 1);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 111);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (62, 111);
+
 -- Gondola One
 insert into lifts(lift_id,lift_name) values (63,"Gondola One");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,63);
+
+insert into runs(run_id,run_name,skill_level) values (112, "Spruce Face", 2);
+insert into runs(run_id,run_name,skill_level) values (113, "Bens Face", 2);
+insert into runs(run_id,run_name,skill_level) values (114, "Candys Cafe", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 112);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 113);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 114);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (63, 112);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (63, 113);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (63, 114);
+
 -- Mountaintop
 insert into lifts(lift_id,lift_name) values (64,"Mountaintop");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,64);
+
+insert into runs(run_id,run_name,skill_level) values (115, "Swingsville", 1);
+insert into runs(run_id,run_name,skill_level) values (116, "Cappuccino", 2);
+insert into runs(run_id,run_name,skill_level) values (117, "Slifer Express", 2);
+insert into runs(run_id,run_name,skill_level) values (118, "Whistle Pig", 2);
+insert into runs(run_id,run_name,skill_level) values (119, "Zot", 3);
+insert into runs(run_id,run_name,skill_level) values (120, "Powerline Glade", 3);
+insert into runs(run_id,run_name,skill_level) values (121, "RamsHorn", 2);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 115);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 116);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 117);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 118);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 119);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 120);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 121);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 115);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 116);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 117);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 118);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 119);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 120);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (64, 121);
+
 -- wildwood 
 insert into lifts(lift_id,lift_name) values (65,"WildWood");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,65);
+
+insert into runs(run_id,run_name,skill_level) values (122, "Hunky Dory", 2);
+insert into runs(run_id,run_name,skill_level) values (123, "Kangaroo Cornice", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 122);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 123);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (65, 122);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (65, 123);
+
 -- Avanti
 insert into lifts(lift_id,lift_name) values (66,"Avanti");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,66);
+
+insert into runs(run_id,run_name,skill_level) values (124, "Avanti", 2);
+insert into runs(run_id,run_name,skill_level) values (125, "Overeasy", 2);
+insert into runs(run_id,run_name,skill_level) values (126, "Cookshank", 3);
+insert into runs(run_id,run_name,skill_level) values (127, "Pickeroon", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 124);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 125);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 126);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 127);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (66, 124);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (66, 125);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (66, 126);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (66, 127);
+
 -- Game creek
 insert into lifts(lift_id,lift_name) values (67,"Game Creek");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,67);
+
 -- Born free 
 insert into lifts(lift_id,lift_name) values (68,"Born Free");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,68);
+
 -- eagle bahn
 insert into lifts(lift_id,lift_name) values (69,"Eagle Bahn");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,69);
+
+insert into runs(run_id,run_name,skill_level) values (128, "Born Free", 2);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 128);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (69, 128);
+
 -- pride
 insert into lifts(lift_id,lift_name) values (70,"Pride");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,70);
+
+insert into runs(run_id,run_name,skill_level) values (129, "Pride", 2);
+insert into runs(run_id,run_name,skill_level) values (130, "Bwana", 2);
+insert into runs(run_id,run_name,skill_level) values (131, "Simba", 2);
+insert into runs(run_id,run_name,skill_level) values (132, "Safari", 2);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 129);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 130);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 131);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 132);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (70, 129);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (70, 130);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (70, 131);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (70, 132);
+
+
 -- cascade village
 insert into lifts(lift_id,lift_name) values (71,"Cascade Village");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,71);
@@ -705,15 +849,110 @@ insert into resorts_to_lifts(resort_id,lift_id) values (8,71);
 -- Highnoon
 insert into lifts(lift_id,lift_name) values (72,"Highnoon");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,72);
+
+insert into runs(run_id,run_name,skill_level) values (133, "The Slot", 2);
+insert into runs(run_id,run_name,skill_level) values (134, "Milts Face", 3);
+insert into runs(run_id,run_name,skill_level) values (135, "Campbells", 3);
+insert into runs(run_id,run_name,skill_level) values (136, "Cows Face", 3);
+insert into runs(run_id,run_name,skill_level) values (137, "Apres Vous", 3);
+insert into runs(run_id,run_name,skill_level) values (138, "Chicken Yard", 3);
+insert into runs(run_id,run_name,skill_level) values (139, "Wow", 3);
+insert into runs(run_id,run_name,skill_level) values (140, "Forever", 3);
+insert into runs(run_id,run_name,skill_level) values (141, "Windows", 3);
+insert into runs(run_id,run_name,skill_level) values (142, "Straightshot", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 133);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 134);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 135);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 136);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 137);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 138);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 139);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 140);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 141);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 142);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 133);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 134);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 135);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 136);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 137);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 138);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 139);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 140);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 141);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (72, 142);
+
 -- Sun up
 insert into lifts(lift_id,lift_name) values (73,"Sun Up");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,73);
+
+insert into runs(run_id,run_name,skill_level) values (143, "Yonder Gully", 3);
+insert into runs(run_id,run_name,skill_level) values (144, "Yonder", 3);
+insert into runs(run_id,run_name,skill_level) values (145, "Over Yonder", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 143);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 144);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 145);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (73, 143);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (73, 144);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (73, 145);
+
 -- Tea cup
 insert into lifts(lift_id,lift_name) values (74,"Tea Cup");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,74);
+
+insert into runs(run_id,run_name,skill_level) values (146, "Red Zinger", 2);
+insert into runs(run_id,run_name,skill_level) values (147, "Emperors Choice", 3);
+insert into runs(run_id,run_name,skill_level) values (148, "Sweet n Sour", 3);
+insert into runs(run_id,run_name,skill_level) values (149, "Genghis Khan", 3);
+insert into runs(run_id,run_name,skill_level) values (150, "Jade Glade", 3);
+insert into runs(run_id,run_name,skill_level) values (151, "Dragons Teeth", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 146);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 147);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 148);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 149);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 150);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 151);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 146);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 147);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 148);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 149);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 150);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (74, 151);
+
 -- orient express
 insert into lifts(lift_id,lift_name) values (75,"Orient Express");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,75);
+
+insert into runs(run_id,run_name,skill_level) values (152, "Chopstix", 2);
+insert into runs(run_id,run_name,skill_level) values (153, "Poppyfields East", 2);
+insert into runs(run_id,run_name,skill_level) values (154, "Shangri-La", 3);
+insert into runs(run_id,run_name,skill_level) values (155, "Gorky-Park", 3);
+insert into runs(run_id,run_name,skill_level) values (156, "Red Square", 3);
+insert into runs(run_id,run_name,skill_level) values (157, "Rasputins Revenge", 3);
+insert into runs(run_id,run_name,skill_level) values (158, "Orient Express", 3);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 152);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 153);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 154);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 155);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 156);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 157);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 158);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 152);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 153);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 154);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 155);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 156);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 157);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (75, 158);
+
+
 -- Skyline express
 insert into lifts(lift_id,lift_name) values (76,"Skyline Express");
 insert into resorts_to_lifts(resort_id,lift_id) values (8,76);
@@ -733,36 +972,63 @@ insert into resorts_to_lifts(resort_id,lift_id) values (8,79);
 insert into lifts(lift_id,lift_name) values (80,"Quicksilver");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,80);
 
+insert into runs(run_id,run_name,skill_level) values (159, "Silverthorne", 1);
+insert into runs(run_id,run_name,skill_level) values (160, "Red Rover", 1);
+insert into runs(run_id,run_name,skill_level) values (161, "Frontier", 1);
+insert into runs(run_id,run_name,skill_level) values (162, "Lower Lehman", 1);
+
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (9, 159);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (9, 160);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (9, 161);
+INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (9, 162);
+
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (80, 159);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (80, 160);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (80, 161);
+INSERT INTO lifts_to_runs(lift_id, run_id) VALUES (80, 162);
+
+-- Falcon
+
 insert into lifts(lift_id,lift_name) values (81,"Falcon SuperChair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,81);
 
+-- 4-Chair
 insert into lifts(lift_id,lift_name) values (82,"4-Chair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,82);
 
+-- Mercury
 insert into lifts(lift_id,lift_name) values (83,"Mercury SuperChair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,83);
 
+-- Beaver Run
 insert into lifts(lift_id,lift_name) values (84,"Beaver Run SuperChair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,84);
 
+-- C-Chair
 insert into lifts(lift_id,lift_name) values (85,"C-Chair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,85);
 
+-- Peak 8
 insert into lifts(lift_id,lift_name) values (86,"Peak 8 SuperConnect");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,86);
 
+-- E-Chair
 insert into lifts(lift_id,lift_name) values (87,"E-Chair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,87);
 
+-- 6-Chair
 insert into lifts(lift_id,lift_name) values (88,"6-Chair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,88);
 
+-- SnowFlake
 insert into lifts(lift_id,lift_name) values (89,"Snowflake");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,89);
 
+-- Rips Ride
 insert into lifts(lift_id,lift_name) values (90,"Rips Ride");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,90);
 
+-- 5-Chair
 insert into lifts(lift_id,lift_name) values (91,"5-Chair");
 insert into resorts_to_lifts(resort_id,lift_id) values (9,91);
 
