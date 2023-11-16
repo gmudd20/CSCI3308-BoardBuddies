@@ -64,7 +64,7 @@ app.get('/welcome', (req, res) => {
 // });
 
 app.get('/', (req, res) => {
-  res.redirect('pages/login'); 
+  res.redirect('/login'); 
 });
 
 app.get('/login', (req, res) => {
