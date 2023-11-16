@@ -24,6 +24,7 @@ Here are the updates we have made since Thursday of last lab:
 None of these are necessarily bug fixes as we haven’t run into one. One bug fix is our index.js and docker-compose as this wouldn’t run when we tried to access our website.
 
 
+
 Our questions about env:
 In our git ignore, but do we still have to push it?
 Our plans for the next week:
