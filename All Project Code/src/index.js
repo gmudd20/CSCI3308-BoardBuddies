@@ -3,6 +3,8 @@ const app = express();
 const pgp = require("pg-promise")();
 const bodyParser = require("body-parser");
 const session = require("express-session");
+var bcrypt = require('bcryptjs');
+
 
 // db config
 const dbConfig = {
@@ -44,6 +46,15 @@ app.use(
     extended: true,
   })
 );
+// Authentication middleware.
+// const auth = (req, res, next) => {
+//   if (!req.session.user) {
+//     return res.redirect("/login");
+//   }
+//   next();
+// };
+
+//app.use(auth);
 
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
@@ -53,7 +64,7 @@ app.get('/welcome', (req, res) => {
 // });
 
 app.get('/', (req, res) => {
-  res.redirect('/login'); 
+  res.redirect('pages/login'); 
 });
 
 app.get('/login', (req, res) => {
@@ -61,9 +72,9 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  //res.render('views/pages/register.ejs')
-  // res.render('pages/register')
   res.render('pages/register')
+  // res.render('pages/register')
+  //res.render('pages/register')
 });
 
 app.post('/register', async (req, res) => {
@@ -72,9 +83,18 @@ app.post('/register', async (req, res) => {
       const hash = await bcrypt.hash(req.body.password, 10);
     
       // To-DO: Insert username and hashed password into 'users' table
-      var userQuery = `insert into users (username, password) values ($1, $2) returning *;`;
-      const user = await db.any(userQuery,[req.body.username, hash]);
+      var testQuery = `select user_name from users where user_name = '${req.body.user_name}'`;
+      const testUser = await db.any(testQuery);
+      console.log('testUser:');
+      console.log(testUser[0]);
+      if (testUser[0] === undefined) {
+        var userQuery = `insert into users (user_name, password) values ($1, $2) returning *;`;
+        const user = await db.any(userQuery,[req.body.user_name, hash]);
       res.redirect('/login')
+      }
+      else {
+        res.redirect('/register')
+      }
 
   } catch (error) {
       console.log(error);
@@ -87,26 +107,33 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
   try {
       // user from the users table where the username is the same as the one entered by the user.
-      var userQuery = `select password from users where username = '${req.body.username}'`;
+      var userQuery = `select password from users where user_name = '${req.body.user_name}'`;
   
       const user = await db.any(userQuery)
-
-      // console.log(user[0].password);
-      // console.log(user[0].username);
-
+      console.log(userQuery);
+      console.log('Úser password is: ',user[0].password);
+      console.log(req.body.password);
+      //console.log(user[0].user_name);
       // check if password from request matches with password in DB
-      const match = await bcrypt.compare(req.body.password, user[0].password);
-      if (match){
+      // const match = await bcrypt.compare(req.body.password, user[0].password);
+      if (!(user[0] === undefined) && req.body.password == user[0].password){
           //save user details in session
           req.session.user = user;
           req.session.save();
-          res.redirect('/discover'); 
+          // res.status(200).json({
+          //   status: 'success',
+          //   message: 'Success',
+          // }); 
+          // res.render('src/views/pages/your_mountain');
+          res.render('pages/your_mountain', {
+            message: 'Invalid input',
+            error: true
+          });
       }
       else{
-          // console.log('Incorrect username or password.');
-          
+          console.log('Incorrect username or password.');
           res.render('pages/login', {
-              message: 'Incorrect username or password.',
+              message: 'Invalid input',
               error: true
           }); 
       }
@@ -117,29 +144,29 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/add_user', function (req, res) {
-  const query =
-    'insert into users (user_name, pass, skill_level) values ($1, $2, $3)  returning * ;';
-  db.any(query, [
-    req.body.user_name,
-    req.body.pass,
-    req.body.skill_level,
-  ])
-    // if query execution succeeds
-    // send success message
-    .then(function (data) {
-      res.status(201).json({
-        status: 'success',
-        data: data,
-        message: 'data added successfully',
-      });
-    })
-    // if query execution fails
-    // send error message
-    .catch(function (err) {
-      return console.log(err);
-    });
-});
+// app.post('/add_user', function (req, res) {
+//   const query =
+//     'insert into users (user_name, pass, skill_level) values ($1, $2, $3)  returning * ;';
+//   db.any(query, [
+//     req.body.user_name,
+//     req.body.pass,
+//     req.body.skill_level,
+//   ])
+//     // if query execution succeeds
+//     // send success message
+//     .then(function (data) {
+//       res.status(201).json({
+//         status: 'success',
+//         data: data,
+//         message: 'data added successfully',
+//       });
+//     })
+//     // if query execution fails
+//     // send error message
+//     .catch(function (err) {
+//       return console.log(err);
+//     });
+// });
 
 
 module.exports = app.listen(3000);
