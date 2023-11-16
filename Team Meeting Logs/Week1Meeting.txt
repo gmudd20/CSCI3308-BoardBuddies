@@ -1,0 +1,18 @@
+-Working well as a team
+--We cooperate well
+--Communication is key
+--Texting is our main goal
+-Found our individual strengths and how to use these
+--Grace is good at SQL and will start on database
+--Most of us are strong at HTML
+--Will be some struggle in CSS
+-Jobs:
+--Isabel: created our application description, CSS files is next jop
+--Grace: will create database and the SQL, helped with wirestream description
+--Caleb: create the git hub and set it all to be organized, helped with wirestream creation, partials and pages(big role that we will all be participating in when needed)
+--Alex: created use case diagram, will be starting on nav bar,
+---Jenna: scribe for lab 10, created storyboard and helped assign all of these
+Overall, a great team and looking strong. 
+Need to fix github link as there was fear the team we created under the CSCI 3308 class could be deleted
+Talked about next week to make sure this git hub is all up to date and set
+

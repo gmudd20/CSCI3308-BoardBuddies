@@ -1,6 +1,0 @@
-#sys file 
-.env
-
-#node files
-package-lock.json
-node_modules/
