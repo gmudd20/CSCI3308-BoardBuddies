@@ -64,7 +64,7 @@ app.get('/welcome', (req, res) => {
 // });
 
 app.get('/', (req, res) => {
-  res.redirect('pages/login'); 
+  res.redirect('/login'); 
 });
 
 app.get('/login', (req, res) => {
@@ -83,13 +83,13 @@ app.post('/register', async (req, res) => {
       const hash = await bcrypt.hash(req.body.password, 10);
     
       // To-DO: Insert username and hashed password into 'users' table
-      var testQuery = `select user_name from users where user_name = '${req.body.user_name}'`;
+      var testQuery = `select username from users where username = '${req.body.username}'`;
       const testUser = await db.any(testQuery);
       console.log('testUser:');
       console.log(testUser[0]);
       if (testUser[0] === undefined) {
-        var userQuery = `insert into users (user_name, password) values ($1, $2) returning *;`;
-        const user = await db.any(userQuery,[req.body.user_name, hash]);
+        var userQuery = `insert into users (username, password) values ($1, $2) returning *;`;
+        const user = await db.any(userQuery,[req.body.username, hash]);
       res.redirect('/login')
       }
       else {
@@ -107,13 +107,12 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
   try {
       // user from the users table where the username is the same as the one entered by the user.
-      var userQuery = `select password from users where user_name = '${req.body.user_name}'`;
+      var userQuery = `select password from users where username = '${req.body.username}'`;
   
       const user = await db.any(userQuery)
       console.log(userQuery);
-      console.log('Úser password is: ',user[0].password);
       console.log(req.body.password);
-      //console.log(user[0].user_name);
+      //console.log(user[0].username);
       // check if password from request matches with password in DB
       // const match = await bcrypt.compare(req.body.password, user[0].password);
       if (!(user[0] === undefined) && req.body.password == user[0].password){
@@ -146,9 +145,9 @@ app.post('/login', async (req, res) => {
 
 // app.post('/add_user', function (req, res) {
 //   const query =
-//     'insert into users (user_name, pass, skill_level) values ($1, $2, $3)  returning * ;';
+//     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
 //   db.any(query, [
-//     req.body.user_name,
+//     req.body.username,
 //     req.body.pass,
 //     req.body.skill_level,
 //   ])
