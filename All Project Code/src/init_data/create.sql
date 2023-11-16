@@ -30,12 +30,6 @@ CREATE TABLE users (
     pass VARCHAR(100),
     skill_level INTEGER
 );
-DROP TABLE IF EXISTS reviews CASCADE;
-CREATE TABLE reviews (
-    review_id INTEGER PRIMARY KEY,
-    title VARCHAR(100),
-    body VARCHAR(100)
-);
 
 -- connecting tables
 DROP TABLE IF EXISTS resorts_to_lifts CASCADE;
@@ -56,15 +50,10 @@ CREATE TABLE lifts_to_runs (
 DROP TABLE IF EXISTS passes_to_resorts CASCADE;
 CREATE TABLE passes_to_resorts (
     pass_id INTEGER REFERENCES passes(pass_id),
-    resort_id INTEGER REFERENCES resort(resort_id)
+    resort_id INTEGER REFERENCES resorts(resort_id)
 );
 DROP TABLE IF EXISTS user_to_pass CASCADE;
 CREATE TABLE user_to_pass (
     user_id INTEGER REFERENCES users(user_id),
     pass_id INTEGER REFERENCES passes(pass_id)
-);
-DROP TABLE IF EXISTS users_to_reviews CASCADE;
-CREATE TABLE users_to_reviews (
-    user_id INTEGER REFERENCES users(user_id),
-    review_id INTEGER REFERENCES reviews(review_id)
 );
