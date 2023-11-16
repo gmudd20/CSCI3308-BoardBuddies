@@ -1101,6 +1101,8 @@ insert into resorts_to_lifts(resort_id,lift_id) values (10,112);
 insert into lifts(lift_id,lift_name) values (113,"Outback");
 insert into resorts_to_lifts(resort_id,lift_id) values (10,113);
 
+insert into users(username, password, pass, skill_level) values ('John Doe', 'password5', 'Epic', 1);
+
 
 
 
