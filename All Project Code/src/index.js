@@ -59,12 +59,9 @@ app.use(
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
 });
-// app.get('/login', (req, res) => {
-//   res.render('pages/login')
-// });
 
 app.get('/', (req, res) => {
-  res.redirect('pages/login'); 
+  res.redirect('/about_us'); 
 });
 
 app.get('/login', (req, res) => {
@@ -167,6 +164,9 @@ app.post('/login', async (req, res) => {
 //       return console.log(err);
 //     });
 // });
+app.get('/about_us', (req, res) => {
+  res.render('pages/about_us')
+});
 
 
 module.exports = app.listen(3000);
