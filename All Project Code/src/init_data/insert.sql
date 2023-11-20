@@ -1460,7 +1460,7 @@ VALUES
 
 -- Ruby
 insert into lifts(lift_id,lift_name) values (106,'Ruby');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,106);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
