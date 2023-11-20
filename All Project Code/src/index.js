@@ -171,7 +171,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', (req, res) =>{
   try{
     const username = req.body.username;
-  const query = 'Select * from users WHERE users.username = $1;'
+    const query = 'Select * from users WHERE users.username = $1;'
 
   db.any(query, [username])
     .then(async user => {
@@ -206,7 +206,7 @@ app.post('/login', (req, res) =>{
 
 
 app.get('/your_mountains', (req,res)=>{
-  const query = 'select * from resorts where resorts.required_pass = users.pass';
+  const query = 'select * from resorts inner join users on resorts.required_pass = users.pass';
   db.any(query)
   .then((resorts)=>{
     res.render("pages/your_mountains",{
