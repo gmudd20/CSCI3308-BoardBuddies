@@ -77,31 +77,54 @@ app.get('/register', (req, res) => {
   //res.render('pages/register')
 });
 
-app.post('/register', async (req, res) => {
-  try {
-      //hash the password using bcrypt library
-      const hash = await bcrypt.hash(req.body.password, 10);
+// app.post('/register', async (req, res) => {
+//   try {
+//       //hash the password using bcrypt library
+//       const hash = await bcrypt.hash(req.body.password, 10);
     
-      // To-DO: Insert username and hashed password into 'users' table
-      var testQuery = `select username from users where username = '${req.body.username}'`;
-      const testUser = await db.any(testQuery);
-      console.log('testUser:');
-      console.log(testUser[0]);
-      if (testUser[0] === undefined) {
-        var userQuery = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
-        const user = await db.any(userQuery,[req.body.username, hash, req.body.pass, req.body.skill]);
-        res.redirect('/login')
-      }
-      else {
-        res.redirect('/register')
-      }
+//       // To-DO: Insert username and hashed password into 'users' table
+//       var testQuery = `select username from users where username = '${req.body.username}'`;
+//       const testUser = await db.any(testQuery);
+//       console.log('testUser:');
+//       console.log(testUser[0]);
+//       if (testUser[0] === undefined) {
+//         var userQuery = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
+//         const user = await db.any(userQuery,[req.body.username, hash, req.body.pass, req.body.skill]);
+//         res.redirect('/login')
+//       }
+//       else {
+//         res.redirect('/register')
+//       }
 
-  } catch (error) {
-      console.log(error);
-      res.render('pages/register', {
-            message: 'Invalid input',
-          error: true
-     }); 
+//   } catch (error) {
+//       console.log(error);
+//       res.render('pages/register', {
+//             message: 'Invalid input',
+//           error: true
+//      }); 
+//   }
+// });
+app.post('/register', async (req, res) => {
+  //hash the password using bcrypt library
+  try{
+  const hash = await bcrypt.hash(req.body.password, 10);
+
+  // To-DO: Insert username and hashed password into 'users' table
+  const username = req.body.username;
+  const query = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
+
+  db.any(query, [username, hash, req.body.pass, req.body.skill])
+    .then(data => {
+          console.log('Succesfully registered user.', data);
+          res.redirect('/login');
+    })
+    .catch(error => {
+      console.log('Error registering user:', error);
+      res.redirect('/register');
+    });
+  }catch(error){
+    console.log('Error registering user:', error);
+      res.redirect('/register');
   }
 });
 
@@ -146,7 +169,8 @@ app.post('/register', async (req, res) => {
 //   }
 // });
 app.post('/login', (req, res) =>{
-  const username = req.body.username;
+  try{
+    const username = req.body.username;
   const query = 'Select * from users WHERE users.username = $1;'
 
   db.any(query, [username])
@@ -172,33 +196,17 @@ app.post('/login', (req, res) =>{
       console.log(error);
       res.redirect('/register');
     })
-})
+  }
+  catch(error){
+    console.log('In .catch block. Reroute to register page');
+      console.log(error);
+      res.redirect('/register');
+  }
+});
 
-// app.post('/add_user', function (req, res) {
-//   const query =
-//     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
-//   db.any(query, [
-//     req.body.username,
-//     req.body.pass,
-//     req.body.skill_level,
-//   ])
-//     // if query execution succeeds
-//     // send success message
-//     .then(function (data) {
-//       res.status(201).json({
-//         status: 'success',
-//         data: data,
-//         message: 'data added successfully',
-//       });
-//     })
-//     // if query execution fails
-//     // send error message
-//     .catch(function (err) {
-//       return console.log(err);
-//     });
-// });
-app.post('/your_mountains', (req,res)=>{
-  const query = 'select * from resorts inner join users where resorts.required_pass = users.pass';
+
+app.get('/your_mountains', (req,res)=>{
+  const query = 'select * from resorts where resorts.required_pass = users.pass';
   db.any(query)
   .then((resorts)=>{
     res.render("pages/your_mountains",{
