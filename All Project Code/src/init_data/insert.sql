@@ -659,8 +659,8 @@ insert into lifts(lift_id,lift_name) values (57,'Golden Peak');
 insert into resorts_to_lifts(resort_id,lift_id) values (8,57);
 
 insert into runs(run_id,run_name,skill_level) values (100, 'Slalom Alley', 3);
-insert into runs(run_id,run_name,skill_level) values (102, 'Fall Line', 3);
-insert into runs(run_id,run_name,skill_level) values (103, 'Golden Peak Race', 3);
+insert into runs(run_id,run_name,skill_level) values (101, 'Fall Line', 3);
+insert into runs(run_id,run_name,skill_level) values (102, 'Golden Peak Race', 3);
 
 INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 100);
 INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 101);
