@@ -88,9 +88,9 @@ app.post('/register', async (req, res) => {
       console.log('testUser:');
       console.log(testUser[0]);
       if (testUser[0] === undefined) {
-        var userQuery = `insert into users (username, password) values ($1, $2) returning *;`;
-        const user = await db.any(userQuery,[req.body.username, hash]);
-      res.redirect('/login')
+        var userQuery = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
+        const user = await db.any(userQuery,[req.body.username, hash, req.body.pass, req.body.skill]);
+        res.redirect('/login')
       }
       else {
         res.redirect('/register')
@@ -98,50 +98,81 @@ app.post('/register', async (req, res) => {
 
   } catch (error) {
       console.log(error);
-      res.redirect('/register')
+      res.render('pages/register', {
+            message: 'Invalid input',
+          error: true
+     }); 
   }
 });
 
 
 
-app.post('/login', async (req, res) => {
-  try {
-      // user from the users table where the username is the same as the one entered by the user.
-      var userQuery = `select password from users where username = '${req.body.username}'`;
+// app.post('/login', async (req, res) => {
+//   try {
+//       // user from the users table where the username is the same as the one entered by the user.
+//       var userQuery = `select password from users where username = '${req.body.username}'`;
   
-      const user = await db.any(userQuery)
-      console.log(userQuery);
-      console.log(req.body.password);
-      //console.log(user[0].username);
-      // check if password from request matches with password in DB
-      // const match = await bcrypt.compare(req.body.password, user[0].password);
-      if (!(user[0] === undefined) && req.body.password == user[0].password){
-          //save user details in session
+//       const user = await db.any(userQuery)
+//       console.log(userQuery);
+//       console.log(req.body.password);
+//       //console.log(user[0].username);
+//       // check if password from request matches with password in DB
+//       // const match = await bcrypt.compare(req.body.password, user[0].password);
+//       if (!(user[0] === undefined) && req.body.password == user[0].password){
+//           //save user details in session
+//           req.session.user = user;
+//           req.session.save();
+//           // res.status(200).json({
+//           //   status: 'success',
+//           //   message: 'Success',
+//           // }); 
+//           // res.render('src/views/pages/your_mountain');
+//           res.render('pages/your_mountain', {
+//             message: 'Invalid input',
+//             error: true
+//           });
+//       }
+//       else{
+//           console.log('Incorrect username or password.');
+//           res.render('pages/login', {
+//               message: 'Invalid input',
+//               error: true
+//           }); 
+//       }
+
+//   } catch (error) {
+//       console.log(error);
+//       res.redirect('/register')
+//   }
+// });
+app.post('/login', (req, res) =>{
+  const username = req.body.username;
+  const query = 'Select * from users WHERE users.username = $1;'
+
+  db.any(query, [username])
+    .then(async user => {
+      if (!user) {
+        res.redirect('/register');
+      }
+      else {
+        // check if password from request matches with password in DB
+        const match = await bcrypt.compare(req.body.password, user[0].password);
+        if(!match) {
+          res.render('pages/login', {message: 'Incorrect username or password.', error: danger});
+        }
+        else {
           req.session.user = user;
           req.session.save();
-          // res.status(200).json({
-          //   status: 'success',
-          //   message: 'Success',
-          // }); 
-          // res.render('src/views/pages/your_mountain');
-          res.render('pages/your_mountain', {
-            message: 'Invalid input',
-            error: true
-          });
+          res.redirect('/your_mountains'); 
+        }
       }
-      else{
-          console.log('Incorrect username or password.');
-          res.render('pages/login', {
-              message: 'Invalid input',
-              error: true
-          }); 
-      }
-
-  } catch (error) {
+    })
+    .catch(error => {
+      console.log('In .catch block. Reroute to register page');
       console.log(error);
-      res.redirect('/register')
-  }
-});
+      res.redirect('/register');
+    })
+})
 
 // app.post('/add_user', function (req, res) {
 //   const query =
@@ -166,6 +197,23 @@ app.post('/login', async (req, res) => {
 //       return console.log(err);
 //     });
 // });
+app.post('/your_mountains', (req,res)=>{
+  const query = 'select * from resorts inner join users where resorts.required_pass = users.pass';
+  db.any(query)
+  .then((resorts)=>{
+    res.render("pages/your_mountains",{
+      resorts,
+    });
+  })
+  .catch((err)=>{
+    res.render("pages/your_mountains",{
+      resorts: [],
+      error: true,
+      message: err.message,
+    })
+  });
+
+});
 
 
 module.exports = app.listen(3000);

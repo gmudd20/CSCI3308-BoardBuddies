@@ -13,6 +13,22 @@ insert into resorts (resort_id, resort_name, required_pass, elevation) values (9
 insert into resorts (resort_id, resort_name, required_pass, elevation) values (10, 'Keystone', 'Epic', 12408);
 insert into resorts (resort_id, resort_name, required_pass, elevation) values (11, 'Crested Butte', 'Epic', 12170);
 
+insert into passes(pass_id,pass_name) values (1, 'Ikon');
+insert into passes(pass_id,pass_name) values (2, 'Epic');
+
+insert into passes_to_resorts (pass_id,resort_id) values (1,1);
+insert into passes_to_resorts (pass_id,resort_id) values (1,2);
+insert into passes_to_resorts (pass_id,resort_id) values (1,3);
+insert into passes_to_resorts (pass_id,resort_id) values (1,4);
+insert into passes_to_resorts (pass_id,resort_id) values (1,5);
+insert into passes_to_resorts (pass_id,resort_id) values (1,6);
+
+insert into passes_to_resorts (pass_id,resort_id) values (2,7);
+insert into passes_to_resorts (pass_id,resort_id) values (2,8);
+insert into passes_to_resorts (pass_id,resort_id) values (2,9);
+insert into passes_to_resorts (pass_id,resort_id) values (2,10);
+insert into passes_to_resorts (pass_id,resort_id) values (2,11);
+
 --Arapahoe Basin runs, lifts, and how they correlate
 --Black Mountain Express Lift 
 insert into lifts (lift_id, lift_name) values (1, 'Black Mountain Express Lift');
