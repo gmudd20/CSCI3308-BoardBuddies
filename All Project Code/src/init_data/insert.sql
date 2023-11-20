@@ -1549,7 +1549,7 @@ VALUES
 insert into lifts(lift_id,lift_name) values (109,'Santiago');
 insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
 
-insert into lifts(lift_id,lift_name) values (110,"Outback");
+insert into lifts(lift_id,lift_name) values (110,'Outback');
 insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
 
 insert into users(username, password, pass, skill_level) values ('John Doe', 'password5', 'Epic', 1);
