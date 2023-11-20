@@ -1555,29 +1555,6 @@ insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
 insert into users(username, password, pass, skill_level) values ('John Doe', 'password5', 'Epic', 1);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
     (260, 'Startfire', 1),
@@ -1589,7 +1566,6 @@ VALUES
     (266, 'Last Alamo', 1),
     (267, 'Prospector', 1),
     (268, 'Bullet', 1);
->>>>>>> main
 
 INSERT INTO lifts_to_runs (lift_id, run_id)
 VALUES 
