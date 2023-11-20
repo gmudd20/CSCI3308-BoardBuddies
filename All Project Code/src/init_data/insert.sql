@@ -1482,7 +1482,7 @@ VALUES
 
 -- outback
 insert into lifts(lift_id,lift_name) values (107,'OutBack');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,107);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
@@ -1525,7 +1525,7 @@ VALUES
 
 -- Wayback
 insert into lifts(lift_id,lift_name) values (108,'Wayback');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,111);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,108);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
@@ -1547,11 +1547,10 @@ VALUES
 
 -- Santiago
 insert into lifts(lift_id,lift_name) values (109,'Santiago');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,112);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
 
-<<<<<<< HEAD
-insert into lifts(lift_id,lift_name) values (113,"Outback");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,113);
+insert into lifts(lift_id,lift_name) values (110,"Outback");
+insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
 
 insert into users(username, password, pass, skill_level) values ('John Doe', 'password5', 'Epic', 1);
 
