@@ -13,6 +13,22 @@ insert into resorts (resort_id, resort_name, required_pass, elevation) values (9
 insert into resorts (resort_id, resort_name, required_pass, elevation) values (10, 'Keystone', 'Epic', 12408);
 insert into resorts (resort_id, resort_name, required_pass, elevation) values (11, 'Crested Butte', 'Epic', 12170);
 
+insert into passes(pass_id,pass_name) values (1, 'Ikon');
+insert into passes(pass_id,pass_name) values (2, 'Epic');
+
+insert into passes_to_resorts (pass_id,resort_id) values (1,1);
+insert into passes_to_resorts (pass_id,resort_id) values (1,2);
+insert into passes_to_resorts (pass_id,resort_id) values (1,3);
+insert into passes_to_resorts (pass_id,resort_id) values (1,4);
+insert into passes_to_resorts (pass_id,resort_id) values (1,5);
+insert into passes_to_resorts (pass_id,resort_id) values (1,6);
+
+insert into passes_to_resorts (pass_id,resort_id) values (2,7);
+insert into passes_to_resorts (pass_id,resort_id) values (2,8);
+insert into passes_to_resorts (pass_id,resort_id) values (2,9);
+insert into passes_to_resorts (pass_id,resort_id) values (2,10);
+insert into passes_to_resorts (pass_id,resort_id) values (2,11);
+
 --Arapahoe Basin runs, lifts, and how they correlate
 --Black Mountain Express Lift 
 insert into lifts (lift_id, lift_name) values (1, 'Black Mountain Express Lift');
@@ -659,8 +675,8 @@ insert into lifts(lift_id,lift_name) values (57,'Golden Peak');
 insert into resorts_to_lifts(resort_id,lift_id) values (8,57);
 
 insert into runs(run_id,run_name,skill_level) values (100, 'Slalom Alley', 3);
-insert into runs(run_id,run_name,skill_level) values (102, 'Fall Line', 3);
-insert into runs(run_id,run_name,skill_level) values (103, 'Golden Peak Race', 3);
+insert into runs(run_id,run_name,skill_level) values (101, 'Fall Line', 3);
+insert into runs(run_id,run_name,skill_level) values (102, 'Golden Peak Race', 3);
 
 INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 100);
 INSERT INTO resorts_to_runs(resort_id, run_id) VALUES (8, 101);
@@ -1460,7 +1476,7 @@ VALUES
 
 -- Ruby
 insert into lifts(lift_id,lift_name) values (106,'Ruby');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,106);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
@@ -1482,7 +1498,7 @@ VALUES
 
 -- outback
 insert into lifts(lift_id,lift_name) values (107,'OutBack');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,107);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
@@ -1525,7 +1541,7 @@ VALUES
 
 -- Wayback
 insert into lifts(lift_id,lift_name) values (108,'Wayback');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,111);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,108);
 
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
@@ -1547,38 +1563,14 @@ VALUES
 
 -- Santiago
 insert into lifts(lift_id,lift_name) values (109,'Santiago');
-insert into resorts_to_lifts(resort_id,lift_id) values (10,112);
+insert into resorts_to_lifts(resort_id,lift_id) values (10,109);
 
-<<<<<<< HEAD
-insert into lifts(lift_id,lift_name) values (113,"Outback");
-insert into resorts_to_lifts(resort_id,lift_id) values (10,113);
+insert into lifts(lift_id,lift_name) values (110,'Outback');
+insert into resorts_to_lifts(resort_id,lift_id) values (10,110);
 
 insert into users(username, password, pass, skill_level) values ('John Doe', 'password5', 'Epic', 1);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 INSERT INTO runs (run_id, run_name, skill_level)
 VALUES 
     (260, 'Startfire', 1),
@@ -1590,7 +1582,6 @@ VALUES
     (266, 'Last Alamo', 1),
     (267, 'Prospector', 1),
     (268, 'Bullet', 1);
->>>>>>> main
 
 INSERT INTO lifts_to_runs (lift_id, run_id)
 VALUES 
