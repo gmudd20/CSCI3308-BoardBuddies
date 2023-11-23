@@ -243,6 +243,7 @@ app.get('/your_mountains', (req,res)=>{
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
+});
 
 
 module.exports = app.listen(3000);
