@@ -216,7 +216,7 @@ app.get('/your_mountains', (req,res)=>{
       message: err.message,
     })
   });
-
+})
 // app.post('/add_user', function (req, res) {
 //   const query =
 //     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
