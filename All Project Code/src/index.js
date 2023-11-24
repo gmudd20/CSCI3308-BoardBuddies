@@ -216,8 +216,12 @@ app.get('/your_mountains', (req,res)=>{
       message: err.message,
     })
   });
+<<<<<<< HEAD
 });
 
+=======
+})
+>>>>>>> main
 // app.post('/add_user', function (req, res) {
 //   const query =
 //     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
@@ -243,6 +247,7 @@ app.get('/your_mountains', (req,res)=>{
 // });
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
+});
 });
 
 app.get('/profile', (req, res) => {
