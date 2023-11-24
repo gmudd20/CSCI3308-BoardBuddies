@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('pages/login')
+  res.render('pages/login');
 });
 
 app.get('/register', (req, res) => {
@@ -179,7 +179,7 @@ app.post('/login', (req, res) =>{
         // check if password from request matches with password in DB
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if(!match) {
-          res.render('pages/login', {message: 'Incorrect username or password.', error: danger});
+          res.render('pages/login', {message: 'Incorrect username or password.', error: any});
         }
         else {
           req.session.user = user;
@@ -216,6 +216,7 @@ app.get('/your_mountains', (req,res)=>{
       message: err.message,
     })
   });
+});
 
 // app.post('/add_user', function (req, res) {
 //   const query =
@@ -244,6 +245,8 @@ app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
 
-
+app.get('/profile', (req, res) => {
+  res.render('pages/profile')
+})
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
