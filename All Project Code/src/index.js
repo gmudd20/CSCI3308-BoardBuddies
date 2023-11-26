@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('pages/login')
+  res.render('pages/login');
 });
 
 app.get('/register', (req, res) => {
@@ -179,7 +179,7 @@ app.post('/login', (req, res) =>{
         // check if password from request matches with password in DB
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if(!match) {
-          res.render('pages/login', {message: 'Incorrect username or password.', error: danger});
+          res.render('pages/login', {message: 'Incorrect username or password.', error: any});
         }
         else {
           req.session.user = user;
@@ -216,7 +216,8 @@ app.get('/your_mountains', (req,res)=>{
       message: err.message,
     })
   });
-})
+});
+
 // app.post('/add_user', function (req, res) {
 //   const query =
 //     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
@@ -240,11 +241,32 @@ app.get('/your_mountains', (req,res)=>{
 //       return console.log(err);
 //     });
 // });
+
+app.delete('/delete_user', function (req, res) {
+
+  var username = req.body.username;
+  var user_query = `delete from users where username = '${username}' cascade;`;
+  db.any(user_query)
+
+  .then(function (data) {
+    console.log(data);
+    var review_data = data[0]["user_id"];
+    console.log(review_data);
+      res.status(200).json ({
+        status: 'success',
+        message: 'data deleted successfully',
+      })
+  })
+  .catch(function (err) {
+    return console.log(err);
+  })
+})
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
-});
 
-
+app.get('/profile', (req, res) => {
+  res.render('pages/profile')
+})
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
