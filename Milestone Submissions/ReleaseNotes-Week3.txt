@@ -1,0 +1,38 @@
+11/28/2023
+
+Here are the updates we have made since Thursday of last lab:
+* Finished Login and Register Functionalilty
+   * ???
+   * Grace
+* Creating the Query for our Your Mountains and Other Options Page
+   * ???
+   * Caleb and Grace
+* Started CSS Files
+   * 
+   * Isabel
+* Created About Us Page and Created Structure for Profile Page
+   * ???
+   * Jenna
+* Updated Footer
+   * More CSS needs to be done to the footer but now the footer buttons are fully functional.
+   * Jenna
+* Started pages Your Mountains and Other Options
+   * ???
+   * Caleb
+* Started Delete user functionalilty in index.js
+   * ???
+   * Alex
+* Index.js -
+   * 
+   * 
+
+
+Our plans for the next week:
+* Caleb: 
+* Alex: 
+* Jenna: Finalize Layout/CSS/text for about us page. Finish functionality for Profile Page so it functions based off user selections.
+* Isabel: Finish CSS files to finalize our website.
+* Grace: 
+
+Below is the automated release notes created from github to show all of our changes: (?????? Fix this?????????)
+Full Changelog: https://github.com/gmudd20/CSCI3308-BoardBuddies/commits/Week2Automated
