@@ -210,15 +210,15 @@ app.post('/login', (req, res) =>{
 });
 
 app.get('/your_mountains', (req,res)=>{
-  console.log(req.session.user[0]['pass']);
 
-  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
+
   const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
-  db.any(q1)
-  .then((runs)=>{
-    console.log(runs)
+  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
+
+  db.any(query, req.session.user[0]['pass'])
+  .then((resorts)=>{
     res.render("pages/your_mountains",{
-      runs,
+      resorts,
     })
   })
   .catch((err)=>{
