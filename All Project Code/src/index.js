@@ -5,6 +5,14 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 var bcrypt = require('bcryptjs');
 
+// Goes in index.js at top
+function getSkills() {
+  diff = ""
+  if(x = 1) return diff = "Green"
+  else if(x = 2) return "Blue"
+  else if(x = 3) return "Black"
+  else return "Double Black"
+}
 
 // db config
 const dbConfig = {
@@ -202,12 +210,16 @@ app.post('/login', (req, res) =>{
 });
 
 app.get('/your_mountains', (req,res)=>{
-  const query = 'select * from resorts inner join users on resorts.required_pass = users.pass';
-  db.any(query)
-  .then((resorts)=>{
+  console.log(req.session.user[0]['pass']);
+
+  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
+  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  db.any(q1)
+  .then((runs)=>{
+    console.log(runs)
     res.render("pages/your_mountains",{
-      resorts,
-    });
+      runs,
+    })
   })
   .catch((err)=>{
     res.render("pages/your_mountains",{
@@ -216,7 +228,7 @@ app.get('/your_mountains', (req,res)=>{
       message: err.message,
     })
   });
-});
+})
 
 // app.post('/add_user', function (req, res) {
 //   const query =
