@@ -200,8 +200,9 @@ app.post('/login', (req, res) =>{
 });
 
 app.get('/your_mountains', (req,res)=>{
-  const query = 'select * from resorts inner join users on resorts.required_pass = users.pass';
-  db.any(query)
+  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
+
+  db.any(query, req.session.user[0]['pass'])
   .then((resorts)=>{
     res.render("pages/your_mountains",{
       resorts,
