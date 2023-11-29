@@ -13,6 +13,7 @@ Here are the updates we have made since Thursday of last lab:
 * Created About Us Page and Created Structure for Profile Page
    * Wrote the HTML to allow the index.js file to start as we need IDs and on clicks to update the users information
    * Jenna
+   * Isabel added some CSS to About Us Page
 * Updated Footer
    * More CSS needs to be done to the footer but now the footer buttons are fully functional.
    * Jenna
