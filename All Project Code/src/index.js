@@ -5,6 +5,14 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 var bcrypt = require('bcryptjs');
 
+// Goes in index.js at top
+function getSkills() {
+  diff = ""
+  if(x = 1) return diff = "Green"
+  else if(x = 2) return "Blue"
+  else if(x = 3) return "Black"
+  else return "Double Black"
+}
 
 // db config
 const dbConfig = {
