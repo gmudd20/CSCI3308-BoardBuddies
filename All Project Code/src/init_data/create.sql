@@ -52,8 +52,3 @@ CREATE TABLE passes_to_resorts (
     pass_id INTEGER REFERENCES passes(pass_id),
     resort_id INTEGER REFERENCES resorts(resort_id)
 );
-DROP TABLE IF EXISTS user_to_pass CASCADE;
-CREATE TABLE user_to_pass (
-    user_id INTEGER REFERENCES users(user_id),
-    pass_id INTEGER REFERENCES passes(pass_id)
-);

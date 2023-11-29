@@ -16,7 +16,7 @@ Docker
 Run on docker with port 3000
 
 ## How to run the tests
-TBD
+Add "npm run prestart && npm run test && npm start" for the command parameter on the docker-compose.yaml file
 
 ## Link to the deployed application
 TBD

@@ -1,0 +1,39 @@
+11/28/2023
+
+Here are the updates we have made since Thursday of last lab:
+* Finished Login and Register Functionalilty
+   * There were a couple bugs that had to do with inserting into our data base. Fixed these and deleted the nav bar from the top to allow website to funciton properly
+   * Grace
+* Creating the Query for our Your Mountains and Other Options Page
+   * This has been the biggest struggle. Caleb spent a lot of time getting the html to work using a basis query that Grace wrote. Spent about two hours together brainstorming a different way to go about this. It is not fully done yet, but what we have so far is functional, just needs to be more detailed. We found out we need an update DOM in order for this to work as we need an on clikc.
+   * Caleb, Alex, andGrace
+* Started CSS Files
+   * About Us and profile page mainly as the other pages are still being highly worked on 
+   * Isabel
+* Created About Us Page and Created Structure for Profile Page
+   * Wrote the HTML to allow the index.js file to start as we need IDs and on clicks to update the users information
+   * Jenna
+   * Isabel added some CSS to About Us Page
+* Updated Footer
+   * More CSS needs to be done to the footer but now the footer buttons are fully functional.
+   * Jenna
+* Started pages Your Mountains and Other Options
+   * A HUGE part of the last week as these two pages are the main part of our idea. Been working closely with Alex and Grace as this is highly dependent on queries but definitely did so much with the HTML and got a HUGE basis on how we will go about in in the ejs as he has a great understanding of it.
+   * Caleb
+* Started Delete user functionalilty in index.js
+   * Started this so the user can delete their account and allow them to create a new one with different password and username 
+   * Alex
+* Index.js -
+   * Created way more API routes, but definietely not all done. This is a constant work in progress as each page is devloping 
+   * Alex and Grace
+
+
+Our plans for the next week:
+* Caleb: Still work on your mountains and a higher focus on other options page. Work closely with Alex and Grace about the index.js
+* Alex: Highly focused on the your mountains query and other parts of the index.js
+* Jenna: Finalize Layout/CSS/text for about us page. Finish functionality for Profile Page so it functions based off user selections.
+* Isabel: Finish CSS files to finalize our website.
+* Grace: Start the other API routes such as changing skill level, changing pass, opening other pages, etc. 
+
+Below is the automated release notes created from github to show all of our changes: (?????? Fix this?????????)
+Full Changelog: https://github.com/gmudd20/CSCI3308-BoardBuddies/commits/Week2Automated
