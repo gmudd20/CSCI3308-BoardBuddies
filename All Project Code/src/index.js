@@ -201,8 +201,32 @@ app.post('/login', (req, res) =>{
   }
 });
 
+
+function filter_resorts() {
+
+}
+
+
 app.get('/your_mountains', (req,res)=>{
   const query = 'select * from resorts inner join users on resorts.required_pass = users.pass';
+  db.any(query)
+  .then((resorts)=>{
+    res.render("pages/your_mountains",{
+      resorts,
+    });
+  })
+  .catch((err)=>{
+    res.render("pages/your_mountains",{
+      resorts: [],
+      error: true,
+      message: err.message,
+    })
+  });
+});
+
+app.get('/runs', (req,res)=>{
+  var resort = req.body.resort;
+  const query = `select * from resorts_to_runs inner join runs on resorts_to_runs.resort_id='${resort}'.resort_id`
   db.any(query)
   .then((resorts)=>{
     res.render("pages/your_mountains",{
