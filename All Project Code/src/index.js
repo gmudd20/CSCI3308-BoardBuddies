@@ -78,10 +78,16 @@ app.get('/login', (req, res) => {
 
 app.get('/register', (req, res) => {
   res.render('pages/register')
+});
+app.get('/about_us', (req, res) => {
+  res.render('pages/about_us')
+});
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.render('pages/login',{message: 'Logged out successfully!'})
   // res.render('pages/register')
   //res.render('pages/register')
 });
-
 // app.post('/register', async (req, res) => {
 //   try {
 //       //hash the password using bcrypt library
@@ -248,6 +254,7 @@ app.get('/profile', (req,res)=>{
     })
   });
 })
+
 
 // app.post('/add_user', function (req, res) {
 //   const query =
