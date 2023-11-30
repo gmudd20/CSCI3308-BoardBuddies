@@ -230,6 +230,25 @@ app.get('/your_mountains', (req,res)=>{
   });
 })
 
+app.get('/profile', (req,res)=>{
+
+  const query = 'select username, pass, skill_level from user where users.user_id = $1;';
+
+  db.any(query, req.session.user[0]['user_id'])
+  .then((resorts)=>{
+    res.render("pages/profile",{
+      profile,
+    })
+  })
+  .catch((err)=>{
+    res.render("pages/profile",{
+      resorts: [],
+      error: true,
+      message: err.message,
+    })
+  });
+})
+
 // app.post('/add_user', function (req, res) {
 //   const query =
 //     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
