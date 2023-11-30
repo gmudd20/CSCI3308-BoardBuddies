@@ -256,29 +256,7 @@ app.get('/profile', (req,res)=>{
 })
 
 
-// app.post('/add_user', function (req, res) {
-//   const query =
-//     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
-//   db.any(query, [
-//     req.body.username,
-//     req.body.pass,
-//     req.body.skill_level,
-//   ])
-//     // if query execution succeeds
-//     // send success message
-//     .then(function (data) {
-//       res.status(201).json({
-//         status: 'success',
-//         data: data,
-//         message: 'data added successfully',
-//       });
-//     })
-//     // if query execution fails
-//     // send error message
-//     .catch(function (err) {
-//       return console.log(err);
-//     });
-// });
+
 
 app.delete('/delete_user', function (req, res) {
 
@@ -298,13 +276,8 @@ app.delete('/delete_user', function (req, res) {
   .catch(function (err) {
     return console.log(err);
   })
-})
-app.get('/about_us', (req, res) => {
-  res.render('pages/about_us')
 });
 
-app.get('/profile', (req, res) => {
-  res.render('pages/profile')
-})
+
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
