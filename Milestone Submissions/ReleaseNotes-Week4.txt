@@ -1,0 +1,46 @@
+Progress since last meeting: 
+
+Whole index.js got up and working 
+
+Pages have a lot of Indepth code and structure is down for them 
+
+Started on css 
+
+In summary: structure of what we needs is there, it would just be minor details 
+
+On how to get two queries and get two variables from them: 
+USE DB.TASK(), Reference lab 7 
+
+ 
+
+Individual components: 
+
+Caleb: spent a lot of time on your mountains and trying to figure out the query, but ended up changing it. Been discussing with all of us on how to change the format of the page. Added all the images we need for each resort and their maps 
+
+Next week: finalize your mountains and other options mainly, working closely with alex 
+
+ 
+
+Jenna: added changes to css, made our logo, made about us structure completely with help from Isabel on css, set up structure on profile 
+
+Next week: working on the index.js profile part with Grace and finalize that part. Make sure functionality is working across these and add user functionality for the user to change pass and skill level 
+
+ 
+
+Alex: updated nav bar to properly call API endpoints, added delete user functionality, worked a lot on brainstorming on your mountains and helped a lot with figuring out the new queries for our new idea 
+
+Next week: add button to user to allow delete their account, keep working on the total functionality on your mountains, look back at lab 7 to look at multiple queries, test delete user file in the server.spec (create additional test for that) 
+
+ 
+
+Isabel: worked on css, html for the about us and the login and register, changing layouts and the user interface to make the website more cohesive 
+
+Next week: html and css to create a cohesive website as now we have code up and running to create a better website 
+
+ 
+
+Grace: index js functionality mainly on register and login, did all the get functions to make a functional nav bar, helped a lot with your mountains  
+
+Next week: keeping working on profile functionality as it isn’t working completely, fix register and login for isabel and jenna, create presentation, finish read me 
+
+ 
