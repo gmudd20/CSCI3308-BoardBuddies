@@ -2,16 +2,21 @@
 <%- include ('../partials/header') %>
 
 <div class="accordion" id="accordionMainBody">
-    <% for(let i=0; i<runs.length; i++){ %>
+    <% for(let i=0; i<resorts.length; i++){ %>
     <div class="accordion-item">
       <h2 class="accordion-header" id="panelsStayOpen-heading<%=i%>">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=i%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=i%>">
-            <%= resorts[i].resort_name %>    -   LEVEL: <%= resorts[i].elevation %>
+            <%= resorts[i].resort_name %>    -   ELEVATION: <%= resorts[i].elevation %> FT
         </button>
       </h2>
       <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
         <div class="accordion-body">           
-            <p> Runs: <%= runs %> </p>
+            <p> Runs: 
+              <% for(let j = 0; j < runs.length; j++){ 
+                  if (runs[j].resort_name == resorts[i].resort_name) { %>
+                    <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> -- 
+              <% } 
+              } %> </p>
         </div>
       </div>
     </div>

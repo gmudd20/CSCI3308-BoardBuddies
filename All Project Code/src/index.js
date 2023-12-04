@@ -217,12 +217,14 @@ app.post('/login', (req, res) =>{
 
 
 app.get('/your_mountains', (req,res)=>{
-  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
-  const q2 = 'select * from resorts inner join users on resorts.required_pass = $1;';
+  //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+  const q2 = `select * from resorts inner join users on resorts.required_pass = $1;`;
+  //'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
-    const q2r = await idk.any(q2, req.session.user[0]['required_pass']);
+    const q2r = await idk.any(q2, req.session.user[0]['pass']);
     return {q1r, q2r};
   })
   .then(data => {
