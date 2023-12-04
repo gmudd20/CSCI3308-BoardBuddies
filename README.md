@@ -23,7 +23,7 @@ Deployment Environment: Google
 
 
 ## Prerequisites to run the application - Any software that needs to be installed to run the application
-Docker Desktop. This can be downloaded from their website 
+Docker Desktop. This can be downloaded from their website. When dowloading, make sure to download the correct version based on the software of your computer. 
 
 ## Instructions on how to run the application locally.
 In your terminal, run the statementl "docker compose up". Using our docker.compose the port will be 3000, which you can look up on google localhost:3000 or click on the port under the web portion of the container on docker directly.
