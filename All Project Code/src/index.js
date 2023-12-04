@@ -54,15 +54,7 @@ app.use(
     extended: true,
   })
 );
-// Authentication middleware.
-// const auth = (req, res, next) => {
-//   if (!req.session.user) {
-//     return res.redirect("/login");
-//   }
-//   next();
-// };
 
-//app.use(auth);
 
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
@@ -215,6 +207,15 @@ app.post('/login', (req, res) =>{
   }
 });
 
+// Authentication middleware.
+const auth = (req, res, next) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  next();
+};
+
+app.use(auth);
 
 app.get('/your_mountains', (req,res)=>{
   //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
@@ -224,6 +225,7 @@ app.get('/your_mountains', (req,res)=>{
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
+    // this might need to be const q2r = await idk.any(q2, req.session.user[0].pass);
     const q2r = await idk.any(q2, req.session.user[0]['pass']);
     return {q1r, q2r};
   })
@@ -247,21 +249,42 @@ app.get('/your_mountains', (req,res)=>{
  
 
 app.get('/profile', (req,res)=>{
-  const query = 'select username, pass, skill_level from user where users.user_id = $1;';
-
-  db.any(query, req.session.user[0]['user_id'])
-  .then((resorts)=>{
+  //fetch user information
+  const query = 'select username, pass, skill_level from users where users.user_id = $1;';
+  console.log(req.session)
+  db.any(query, req.session.user[0].user_id)
+  .then((data) =>{
+    console.log(data);
     res.render("pages/profile",{
-      profile,
-    })
+      username: data[0].username,
+      pass: data[0].pass,
+      skill_level: data[0].skill_level
+    })  
   })
   .catch((err)=>{
+    console.log("error")
     res.render("pages/profile",{
-      resorts: [],
-      error: true,
-      message: err.message,
-    })
+      username: "",
+      pass: "",
+      skill_level: ""
+    }) 
   });
+  //display it when they click on it
+
+  // db.any(query, req.session.user[0]['user_id'])
+  // .then((resorts)=>{
+  //   res.render("pages/profile",{
+  //     username: req.session.user.username,
+  //     profile,
+  //   })
+  // })
+  // .catch((err)=>{
+  //   res.render("pages/profile",{
+  //     resorts: [],
+  //     error: true,
+  //     message: err.message,
+  //   })
+  // });
 });
 
 app.get('/runs', (req,res)=>{
@@ -281,9 +304,6 @@ app.get('/runs', (req,res)=>{
     })
   });
 });
-
-
-
 
 app.delete('/delete_user', function (req, res) {
 
