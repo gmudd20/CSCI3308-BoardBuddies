@@ -4,7 +4,31 @@
 <div class="accordion" id="accordionMainBody">
     <% for(let i=0; i<resorts.length; i++){ %>
     <% var rname = resorts[i].resort_name %>
-    <% if(rname != resorts[i].resort_name | i == 0) { %>
+    <% if(i == 0 || resorts[i].resort_name != resorts[i - 1].resort_name) { %>
+      <% var greenCount = 0;
+         var blueCount = 0;
+         var blackCount = 0;
+         var dblBlackCount = 0;
+         for (let g = 0; g < runs.length; g++) {
+           if (runs[g].resort_name == rname) {
+             if (runs[g].skill_level == 1) {
+               greenCount ++;
+             }
+             if (runs[g].skill_level == 2) {
+               blueCount ++;
+             }
+             if (runs[g].skill_level == 3) {
+              blackCount ++;
+            }
+            if (runs[g].skill_level == 4) {
+              dblBlackCount ++;
+            }
+           }
+         }
+        console.log(greenCount);
+        console.log(blueCount);
+        console.log(blackCount);
+        console.log(dblBlackCount); %>
       <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-heading<%=i%>">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=i%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=i%>">
@@ -14,10 +38,11 @@
         <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
           <div class="accordion-body">           
             <p> Runs: 
+              <% console.log(resorts[i].resort_name) %>
               <% for(let j = 0; j < runs.length; j++){ 
                 if (runs[j].resort_name == resorts[i].resort_name) { %>
                   <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
-                <% } 
+                <% }
               } %> </p>
               </div>
             </div>
