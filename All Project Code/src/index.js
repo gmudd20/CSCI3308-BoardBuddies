@@ -78,6 +78,7 @@ app.get('/register&message=:message', (req, res) => {
 });
 
 
+
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
@@ -341,22 +342,16 @@ app.get('/runs', (req,res)=>{
   });
 });
 
-app.delete('/delete_user', function (req, res) {
+app.get('/delete_user', function (req, res) {
 
-  var username = req.body.username;
-  var user_query = `delete from users where username = '${username}' cascade;`;
+  var username = req.session.user[0].username;
+  var user_query = `delete from users where username = '${username}';`;
   db.any(user_query)
 
-  .then(function (data) {
-    console.log(data);
-    var review_data = data[0]["user_id"];
-    console.log(review_data);
-      res.status(200).json ({
-        status: 'success',
-        message: 'data deleted successfully',
-      })
+  .then( (data)=> {
+    res.redirect('/register&message=Deleted%20profile%20successfully!');
   })
-  .catch(function (err) {
+  .catch(function (err) { 
     return console.log(err);
   })
 });
