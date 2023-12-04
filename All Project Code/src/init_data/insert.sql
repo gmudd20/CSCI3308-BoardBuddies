@@ -1606,3 +1606,5 @@ VALUES
     (10, 266),
     (10, 267),
     (10, 268);
+
+-- docker-compose exec db psql -U postgres
