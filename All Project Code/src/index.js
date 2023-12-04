@@ -216,25 +216,32 @@ app.post('/login', (req, res) =>{
 });
 
 app.get('/your_mountains', (req,res)=>{
-
-
   const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
-  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
-
-  db.any(query, req.session.user[0]['pass'])
-  .then((resorts)=>{
+  const q2 = 'select * from resorts inner join users on resorts.required_pass = $1;';
+ 
+  db.task('get-data', async idk => {
+    const q1r = await idk.any(q1);
+    const q2r = await idk.any(q2, req.session.user[0]['required_pass']);
+    return {q1r, q2r};
+  })
+  .then(data => {
+    console.log(data.q1r);
+    //console.log(data.q2r);
     res.render("pages/your_mountains",{
-      resorts,
+      runs: data.q1r,
+      resorts: data.q2r,
     })
   })
   .catch((err)=>{
     res.render("pages/your_mountains",{
       resorts: [],
+      runs: [],
       error: true,
       message: err.message,
     })
   });
-})
+ })
+ 
 
 app.get('/profile', (req,res)=>{
 
