@@ -7,13 +7,20 @@ Our app will show mountains in Colorado organized by the IKON and EPIC passes. U
 Grace Mudd, Isabel Dudney, Alex Ulrich, Jenna Jones, and Caleb Anderson.
 
 ## Technology Stack used for the project
-Project Tracker: Project Board on Github
-VCS Repository: GitHub
-Database: PostgreSQL
-IDE: Code::Blocks
-UI Tools: HTML, EJS, CSS, JS
-Application Server: NodeJS
-Deployment Environment: Google 
+Project Tracker: Project Board on Github  
+
+VCS Repository: GitHub  
+
+Database: PostgreSQL  
+
+IDE: Code::Blocks  
+
+UI Tools: HTML, EJS, CSS, JS  
+
+Application Server: NodeJS  
+
+Deployment Environment: Google   
+
 
 ## Prerequisites to run the application - Any software that needs to be installed to run the application
 Docker Desktop. This can be downloaded from their website 
