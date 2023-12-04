@@ -354,6 +354,25 @@ app.delete('/delete_user', function (req, res) {
   })
 });
 
+app.delete('/delete_account',function (req,res){
+  var username = req.body.username;
+  var user_query = `delete from users where username = '${req.session.username}' cascade;`;
+  db.any(user_query)
+
+  .then(function (data) {
+    console.log(data);
+    var review_data = data[0]["user_id"];
+    console.log(review_data);
+      res.status(200).json ({
+        status: 'success',
+        message: 'data deleted successfully',
+      })
+  })
+  .catch(function (err) {
+    return console.log(err);
+  })
+})
+
 
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
