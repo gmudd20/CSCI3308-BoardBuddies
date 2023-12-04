@@ -69,7 +69,7 @@ app.get('/welcome', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect('/profile'); 
+  res.redirect('/login'); 
 });
 
 app.get('/login', (req, res) => {
