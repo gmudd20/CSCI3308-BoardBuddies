@@ -215,26 +215,36 @@ app.post('/login', (req, res) =>{
   }
 });
 
+
 app.get('/your_mountains', (req,res)=>{
-
-
-  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
-  const query = 'select * from resorts inner join users on resorts.required_pass = $1;';
-
-  db.any(query, req.session.user[0]['pass'])
-  .then((resorts)=>{
+  //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+  const q2 = `select * from resorts inner join users on resorts.required_pass = $1;`;
+  //'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+ 
+  db.task('get-data', async idk => {
+    const q1r = await idk.any(q1);
+    const q2r = await idk.any(q2, req.session.user[0]['pass']);
+    return {q1r, q2r};
+  })
+  .then(data => {
+    console.log(data.q1r);
+    //console.log(data.q2r);
     res.render("pages/your_mountains",{
-      resorts,
+      runs: data.q1r,
+      resorts: data.q2r,
     })
   })
   .catch((err)=>{
     res.render("pages/your_mountains",{
       resorts: [],
+      runs: [],
       error: true,
       message: err.message,
     })
   });
-})
+ })
+ 
 
 app.get('/profile', (req,res)=>{
   const query = 'select username, pass, skill_level from user where users.user_id = $1;';
@@ -252,7 +262,25 @@ app.get('/profile', (req,res)=>{
       message: err.message,
     })
   });
-})
+});
+
+app.get('/runs', (req,res)=>{
+  var resort = req.body.resort;
+  const query = `select * from resorts_to_runs inner join runs on resorts_to_runs.resort_id='${resort}'.resort_id`
+  db.any(query)
+  .then((resorts)=>{
+    res.render("pages/your_mountains",{
+      resorts,
+    });
+  })
+  .catch((err)=>{
+    res.render("pages/your_mountains",{
+      resorts: [],
+      error: true,
+      message: err.message,
+    })
+  });
+});
 
 
 
