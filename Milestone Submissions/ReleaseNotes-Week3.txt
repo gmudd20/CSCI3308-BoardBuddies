@@ -35,5 +35,8 @@ Our plans for the next week:
 * Isabel: Finish CSS files to finalize our website.
 * Grace: Start the other API routes such as changing skill level, changing pass, opening other pages, etc. 
 
-Below is the automated release notes created from github to show all of our changes: (?????? Fix this?????????)
-Full Changelog: https://github.com/gmudd20/CSCI3308-BoardBuddies/commits/Week2Automated
+Below is the automated release notes created from github to show all of our changes from the last automated notes:
+https://github.com/gmudd20/CSCI3308-BoardBuddies/releases/tag/Week3Automated 
+
+Below is the full change log:
+https://github.com/gmudd20/CSCI3308-BoardBuddies/compare/Week2Automated...Week3Automated

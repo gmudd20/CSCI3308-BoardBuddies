@@ -78,10 +78,16 @@ app.get('/login', (req, res) => {
 
 app.get('/register', (req, res) => {
   res.render('pages/register')
+});
+app.get('/about_us', (req, res) => {
+  res.render('pages/about_us')
+});
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.render('pages/login',{message: 'Logged out successfully!'})
   // res.render('pages/register')
   //res.render('pages/register')
 });
-
 // app.post('/register', async (req, res) => {
 //   try {
 //       //hash the password using bcrypt library
@@ -211,15 +217,45 @@ app.post('/login', (req, res) =>{
 
 
 app.get('/your_mountains', (req,res)=>{
-  const query = 'select * from resorts inner join users on resorts.required_pass = users.pass';
-  db.any(query)
-  .then((resorts)=>{
+  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  const q2 = 'select * from resorts inner join users on resorts.required_pass = $1;';
+ 
+  db.task('get-data', async idk => {
+    const q1r = await idk.any(q1);
+    const q2r = await idk.any(q2, req.session.user[0]['required_pass']);
+    return {q1r, q2r};
+  })
+  .then(data => {
+    console.log(data.q1r);
+    //console.log(data.q2r);
     res.render("pages/your_mountains",{
-      resorts,
-    });
+      runs: data.q1r,
+      resorts: data.q2r,
+    })
   })
   .catch((err)=>{
     res.render("pages/your_mountains",{
+      resorts: [],
+      runs: [],
+      error: true,
+      message: err.message,
+    })
+  });
+ })
+ 
+
+app.get('/profile', (req,res)=>{
+
+  const query = 'select username, pass, skill_level from user where users.user_id = $1;';
+
+  db.any(query, req.session.user[0]['user_id'])
+  .then((resorts)=>{
+    res.render("pages/profile",{
+      profile,
+    })
+  })
+  .catch((err)=>{
+    res.render("pages/profile",{
       resorts: [],
       error: true,
       message: err.message,
@@ -245,29 +281,8 @@ app.get('/runs', (req,res)=>{
   });
 });
 
-// app.post('/add_user', function (req, res) {
-//   const query =
-//     'insert into users (username, pass, skill_level) values ($1, $2, $3)  returning * ;';
-//   db.any(query, [
-//     req.body.username,
-//     req.body.pass,
-//     req.body.skill_level,
-//   ])
-//     // if query execution succeeds
-//     // send success message
-//     .then(function (data) {
-//       res.status(201).json({
-//         status: 'success',
-//         data: data,
-//         message: 'data added successfully',
-//       });
-//     })
-//     // if query execution fails
-//     // send error message
-//     .catch(function (err) {
-//       return console.log(err);
-//     });
-// });
+
+
 
 app.delete('/delete_user', function (req, res) {
 
@@ -287,13 +302,8 @@ app.delete('/delete_user', function (req, res) {
   .catch(function (err) {
     return console.log(err);
   })
-})
-app.get('/about_us', (req, res) => {
-  res.render('pages/about_us')
 });
 
-app.get('/profile', (req, res) => {
-  res.render('pages/profile')
-})
+
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
