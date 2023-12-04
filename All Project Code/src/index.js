@@ -71,6 +71,13 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('pages/register')
 });
+
+app.get('/register&message=:message', (req, res) => {
+  console.log(req.params.message)
+  res.render('pages/register', {message: req.params.message})
+});
+
+
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
@@ -178,14 +185,14 @@ app.post('/login', (req, res) =>{
 
   db.any(query, [username])
     .then(async user => {
-      if (!user) {
-        res.redirect('/register');
+      if (user.length === 0) {
+        res.redirect('/register&message=Username%20doesn%27t%20exist');
       }
       else {
         // check if password from request matches with password in DB
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if(!match) {
-          res.render('pages/login', {message: 'Incorrect username or password.', error: any});
+          res.render('pages/login', {message: 'Incorrect username or password.'});
         }
         else {
           req.session.user = user;
