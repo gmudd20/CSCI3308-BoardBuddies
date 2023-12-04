@@ -247,7 +247,6 @@ app.get('/your_mountains', (req,res)=>{
  
 
 app.get('/profile', (req,res)=>{
-
   const query = 'select username, pass, skill_level from user where users.user_id = $1;';
 
   db.any(query, req.session.user[0]['user_id'])

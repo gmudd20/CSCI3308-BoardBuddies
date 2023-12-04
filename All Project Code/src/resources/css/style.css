@@ -3,6 +3,21 @@
     height: 150px;
     overflow: hidden;
 }
-.who-are-we-card{
-    background-color: aquamarine;
+
+#our-goal-card,#vision-statment-card,#who-are-we-card
+.card-body {
+    width: 25rem;
 }
+/* .diff-photos{
+    width: 286px;
+    height: 290px;
+    overflow: hidden;
+} */
+.card-text {
+    height: 150px;
+}
+.header {
+    margin-top: 20px; 
+    margin-bottom: 
+    20px; margin-left: 20px;
+};
