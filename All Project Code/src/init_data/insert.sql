@@ -350,6 +350,7 @@ insert into resorts_to_runs (resort_id, run_id) values (3,52);
 -- insert into resorts_to_lifts(resort_id, lift_id) values (3, 38);
 -- insert into resorts_to_lifts(resort_id, lift_id) values (3, 39);
 
+
 -- EPIC RESORTS 
 -- Crested butte
 
@@ -1607,4 +1608,249 @@ VALUES
     (10, 267),
     (10, 268);
 
--- docker-compose exec db psql -U postgres
+    --Steamboat Springs Ski Resort
+--Wild Blue Gondala I
+-- insert into lifts (lift_id, lift_name) values (40, "Wild Blue Gondala I");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 40);
+
+insert into runs (run_id, run_name, skill_level) values (269, "Right-O-Way", 1);
+insert into runs (run_id, run_name, skill_level) values (270, "Swinger", 1);
+insert into resorts_to_runs (resort_id, run_id) values (4,269);
+insert into resorts_to_runs (resort_id, run_id) values (4,270);
+-- insert into lifts_to_runs (lift_id, run_id) values (40,54);
+-- insert into lifts_to_runs (lift_id, run_id) values (40,55);
+
+--Steamboat Gondala
+-- insert into lifts (lift_id, lift_name) values (43, "Steamboat Gondala");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 43);
+
+insert into runs (run_id, run_name, skill_level) values (271, "Valley View", 3);
+insert into runs (run_id, run_name, skill_level) values (272, "Heavenly Daze", 2);
+insert into resorts_to_runs (resort_id, run_id) values (4,271);
+insert into resorts_to_runs (resort_id, run_id) values (4,272);
+-- insert into lifts_to_runs (lift_id, run_id) values (43,56);
+-- insert into lifts_to_runs (lift_id, run_id) values (43,57);
+
+--Wild Blue Gondala II
+-- insert into lifts (lift_id, lift_name) values (41, "Wild Blue Gondala II");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 41);
+
+insert into runs (run_id, run_name, skill_level) values (273, "Sundown Liftline", 3);
+insert into runs (run_id, run_name, skill_level) values (274, "High Noon", 2);
+insert into runs (run_id, run_name, skill_level) values (275, "Sunshine Lift Line", 2);
+insert into resorts_to_runs (resort_id, run_id) values (4,273);
+insert into resorts_to_runs (resort_id, run_id) values (4,274);
+insert into resorts_to_runs (resort_id, run_id) values (4,275);
+-- insert into lifts_to_runs (lift_id, run_id) values (41,58);
+-- insert into lifts_to_runs (lift_id, run_id) values (41,59);
+-- insert into lifts_to_runs (lift_id, run_id) values (41,60);
+
+--Thunderhead Express
+-- insert into lifts (lift_id, lift_name) values (50, "Thunderhead Express");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 50);
+
+insert into runs (run_id, run_name, skill_level) values (276, "Edge of the World", 3);
+insert into runs (run_id, run_name, skill_level) values (277, "Endless Gully", 4);
+insert into runs (run_id, run_name, skill_level) values (278, "Ultimate Glades", 4);
+insert into resorts_to_runs (resort_id, run_id) values (4,276);
+insert into resorts_to_runs (resort_id, run_id) values (4,277);
+insert into resorts_to_runs (resort_id, run_id) values (4,278);
+-- insert into lifts_to_runs (lift_id, run_id) values (50,61);
+-- insert into lifts_to_runs (lift_id, run_id) values (50,62);
+-- insert into lifts_to_runs (lift_id, run_id) values (50,63);
+
+--rest of lifts at Steamboat that arent at the bottom and dont need to take another lift to get to
+-- insert into lifts (lift_id, lift_name) values (42, "Wildhorse Gondala");
+-- insert into lifts (lift_id, lift_name) values (44, "Christie Peak Express");
+-- insert into lifts (lift_id, lift_name) values (45, "Mahogany Ridge Express");
+-- insert into lifts (lift_id, lift_name) values (46, "Greenhorn Ranch Express");
+-- insert into lifts (lift_id, lift_name) values (47, "Elkhead Express");
+-- insert into lifts (lift_id, lift_name) values (48, "Sunshine Express");
+-- insert into lifts (lift_id, lift_name) values (49, "Pony Express");
+-- insert into lifts (lift_id, lift_name) values (51, "Storm Peak Express");
+-- insert into lifts (lift_id, lift_name) values (52,"Sundown Express");
+-- insert into lifts (lift_id, lift_name) values (53,"Burgess Express");
+-- insert into lifts (lift_id, lift_name) values (54,"Morningside");
+-- insert into lifts (lift_id, lift_name) values (55,"Four Points");
+-- insert into lifts (lift_id, lift_name) values (56,"South Peak");
+-- insert into lifts (lift_id, lift_name) values (57,"Bar U E");
+-- insert into lifts (lift_id, lift_name) values (58,"Bashor");
+-- insert into lifts (lift_id, lift_name) values (59,"Wrangler Carpet");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 42);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 44);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 45);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 46);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 47);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 48);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 49);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 51);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 52);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 53);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 54);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 55);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 56);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 57);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 58);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (4, 59);
+
+--Winter Park Ski Resort data
+--Gondala lift
+-- insert into lifts (lift_id, lift_name) values (61, "The Gondala");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 61);
+insert into runs (run_id, run_name, skill_level) values (279, "Outrigger Trail", 4);
+insert into runs (run_id, run_name, skill_level) values (280, "Cranmer", 2);
+insert into runs (run_id, run_name, skill_level) values (281, "Hughes", 3);
+insert into resorts_to_runs (resort_id, run_id) values (5,279);
+insert into resorts_to_runs (resort_id, run_id) values (5,280);
+insert into resorts_to_runs (resort_id, run_id) values (5,281);
+-- insert into lifts_to_runs (lift_id, run_id) values (61,64);
+-- insert into lifts_to_runs (lift_id, run_id) values (61,65);
+-- insert into lifts_to_runs (lift_id, run_id) values (61,66);
+
+--Gemini Express lift
+-- insert into lifts (lift_id, lift_name) values (70, "Gemini Express");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 70);
+insert into runs (run_id, run_name, skill_level) values (282, "Village Way", 1);
+insert into runs (run_id, run_name, skill_level) values (283, "Porcupine", 1);
+insert into runs (run_id, run_name, skill_level) values (284, "Bill Wilson's Way", 1);
+insert into resorts_to_runs (resort_id, run_id) values (5,282);
+insert into resorts_to_runs (resort_id, run_id) values (5,283);
+insert into resorts_to_runs (resort_id, run_id) values (5,284);
+-- insert into lifts_to_runs (lift_id, run_id) values (70,67);
+-- insert into lifts_to_runs (lift_id, run_id) values (70,68);
+-- insert into lifts_to_runs (lift_id, run_id) values (70,69);
+
+--Arrow lift
+-- insert into lifts (lift_id, lift_name) values (73, "Arrow");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 73);
+insert into runs (run_id, run_name, skill_level) values (285, "Larry Sale", 2);
+insert into runs (run_id, run_name, skill_level) values (286, "Lower Hughes", 3);
+insert into resorts_to_runs (resort_id, run_id) values (5,285);
+insert into resorts_to_runs (resort_id, run_id) values (5,286);
+-- insert into lifts_to_runs (lift_id, run_id) values (73,70);
+-- insert into lifts_to_runs (lift_id, run_id) values (73,71);
+
+--Super Gauge express
+-- insert into lifts (lift_id, lift_name) values (66, "Super Gauge Express");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 66);
+insert into runs (run_id, run_name, skill_level) values (287, "Whistlestop", 1);
+insert into runs (run_id, run_name, skill_level) values (288, "Sidetrack", 3);
+insert into runs (run_id, run_name, skill_level) values (289, "Bluebell", 2);
+insert into resorts_to_runs (resort_id, run_id) values (5,287);
+insert into resorts_to_runs (resort_id, run_id) values (5,288);
+insert into resorts_to_runs (resort_id, run_id) values (5,289);
+-- insert into lifts_to_runs (lift_id, run_id) values (66,72);
+-- insert into lifts_to_runs (lift_id, run_id) values (66,73);
+-- insert into lifts_to_runs (lift_id, run_id) values (66,74);
+
+--Iron Horse
+-- insert into lifts (lift_id, lift_name) values (75, "Iron Horse");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 75);
+insert into runs (run_id, run_name, skill_level) values (290, "Pine Cliffs", 4);
+insert into runs (run_id, run_name, skill_level) values (291, "Upper Arrowhead Loop", 4);
+insert into runs (run_id, run_name, skill_level) values (292, "Narrow Gauge", 3);
+insert into resorts_to_runs (resort_id, run_id) values (5,290);
+insert into resorts_to_runs (resort_id, run_id) values (5,291);
+insert into resorts_to_runs (resort_id, run_id) values (5,292);
+-- insert into lifts_to_runs (lift_id, run_id) values (75,75);
+-- insert into lifts_to_runs (lift_id, run_id) values (75,76);
+-- insert into lifts_to_runs (lift_id, run_id) values (75,77);
+
+--Challenger lift
+-- insert into lifts (lift_id, lift_name) values (78, "Challenger");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 78);
+insert into runs (run_id, run_name, skill_level) values (293, "Little Ten", 4);
+insert into runs (run_id, run_name, skill_level) values (294, "Sleeper", 3);
+insert into runs (run_id, run_name, skill_level) values (295, "Freeriders", 4);
+insert into resorts_to_runs (resort_id, run_id) values (5,293);
+insert into resorts_to_runs (resort_id, run_id) values (5,294);
+insert into resorts_to_runs (resort_id, run_id) values (5,295);
+-- insert into lifts_to_runs (lift_id, run_id) values (78,78);
+-- insert into lifts_to_runs (lift_id, run_id) values (78,79);
+-- insert into lifts_to_runs (lift_id, run_id) values (78,80);
+
+
+--rest of lifts and relation to Winter Park
+-- insert into lifts (lift_id, lift_name) values (62, "Village Cabriolet");
+-- insert into lifts (lift_id, lift_name) values (63, "Pioneer Express");
+-- insert into lifts (lift_id, lift_name) values (64, "Sunnyside Express");
+-- insert into lifts (lift_id, lift_name) values (65, "Panoramic Express");
+-- insert into lifts (lift_id, lift_name) values (67, "Explorer Express");
+-- insert into lifts (lift_id, lift_name) values (68, "Olympia Express");
+-- insert into lifts (lift_id, lift_name) values (69, "Prospector Express");
+-- insert into lifts (lift_id, lift_name) values (71, "High Lonesome Express");
+-- insert into lifts (lift_id, lift_name) values (72, "Eagle Wind");
+-- insert into lifts (lift_id, lift_name) values (74, "Endeavor");
+-- insert into lifts (lift_id, lift_name) values (76, "Pony Express");
+-- insert into lifts (lift_id, lift_name) values (77, "Galloping Goose");
+-- insert into lifts (lift_id, lift_name) values (79, "Discovery");
+-- insert into lifts (lift_id, lift_name) values (80, "Looking Glass");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 62);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 63);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 64);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 65);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 67);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 68);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 69);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 71);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 72);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 74);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 76);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 77);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 79);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (5, 80);
+
+--Eldora Ski resort information
+-- insert into lifts (lift_id, lift_name) values (81, "Alpenglow");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 81);
+insert into runs (run_id, run_name, skill_level) values (296, "Hornblower", 2);
+insert into runs (run_id, run_name, skill_level) values (297, "Cannonball Run", 3);
+insert into runs (run_id, run_name, skill_level) values (298, "Jolly Jug", 2);
+insert into resorts_to_runs (resort_id, run_id) values (6,296);
+insert into resorts_to_runs (resort_id, run_id) values (6,297);
+insert into resorts_to_runs (resort_id, run_id) values (6,298);
+-- insert into lifts_to_runs (lift_id, run_id) values (81,81);
+-- insert into lifts_to_runs (lift_id, run_id) values (81,82);
+-- insert into lifts_to_runs (lift_id, run_id) values (81,83);
+
+--EZ lift and runs
+-- insert into lifts (lift_id, lift_name) values (84, "EZ");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 84);
+insert into runs (run_id, run_name, skill_level) values (299, "Upper Bunnyfair", 2);
+insert into runs (run_id, run_name, skill_level) values (300, "Fun Gully", 3);
+insert into resorts_to_runs (resort_id, run_id) values (6,299);
+insert into resorts_to_runs (resort_id, run_id) values (6,300);
+-- insert into lifts_to_runs (lift_id, run_id) values (84,84);
+-- insert into lifts_to_runs (lift_id, run_id) values (84,85);
+
+--Sundance
+-- insert into lifts (lift_id, lift_name) values (86, "Sundance");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 86);
+insert into runs (run_id, run_name, skill_level) values (301, "Sundance", 2);
+insert into resorts_to_runs (resort_id, run_id) values (6,301);
+-- insert into lifts_to_runs (lift_id, run_id) values (86,86);
+
+--Corona
+-- insert into lifts (lift_id, lift_name) values (82, "Corona");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 82);
+insert into runs (run_id, run_name, skill_level) values (302, "Corona", 3);
+insert into runs (run_id, run_name, skill_level) values (303, "Brian's Glade", 4);
+insert into resorts_to_runs (resort_id, run_id) values (6,302);
+insert into resorts_to_runs (resort_id, run_id) values (6,303);
+-- insert into lifts_to_runs (lift_id, run_id) values (82,87);
+-- insert into lifts_to_runs (lift_id, run_id) values (82,88);
+
+--Indian Peak
+-- insert into lifts (lift_id, lift_name) values (83, "Indian Peak");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 82);
+insert into runs (run_id, run_name, skill_level) values (304, "Ambush", 4);
+insert into runs (run_id, run_name, skill_level) values (305, "Muleshoe", 3);
+insert into resorts_to_runs (resort_id, run_id) values (6,304);
+insert into resorts_to_runs (resort_id, run_id) values (6,305);
+-- insert into lifts_to_runs (lift_id, run_id) values (83,89);
+-- insert into lifts_to_runs (lift_id, run_id) values (83,90);
+
+-- insert into lifts (lift_id, lift_name) values (85, "Caribou");
+-- insert into lifts (lift_id, lift_name) values (87, "Littlehawk");
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 85);
+-- insert into resorts_to_lifts(resort_id, lift_id) values (6, 87);
