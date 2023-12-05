@@ -1850,6 +1850,11 @@ insert into resorts_to_runs (resort_id, run_id) values (6,305);
 -- insert into lifts_to_runs (lift_id, run_id) values (83,89);
 -- insert into lifts_to_runs (lift_id, run_id) values (83,90);
 
+insert into runs (run_id, run_name, skill_level) values (306, 'BunnyFair', 1);
+insert into runs (run_id, run_name, skill_level) values (307, 'Snail', 1);
+insert into resorts_to_runs (resort_id, run_id) values (6,306);
+insert into resorts_to_runs (resort_id, run_id) values (6,307); 
+
 -- insert into lifts (lift_id, lift_name) values (85, "Caribou");
 -- insert into lifts (lift_id, lift_name) values (87, "Littlehawk");
 -- insert into resorts_to_lifts(resort_id, lift_id) values (6, 85);
