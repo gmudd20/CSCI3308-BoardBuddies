@@ -1,7 +1,7 @@
 
 <%- include ('../partials/header') %>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
-  <div class="accordion" id="accordionMainBody">
+
+<div class="accordion" id="accordionMainBody">
     <% for(let i=0; i<resorts.length; i++){ %>
     <% var rname = resorts[i].resort_name %> 
     <% if(i == 0 || resorts[i].resort_name != resorts[i - 1].resort_name) { %>
@@ -40,10 +40,7 @@
             <p>MAP: </p>
             <% var thing = '/img/' + rname +  '.jpg' %>
             <% console.log(thing) %>
-            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; 
-            width: 800px;
-            overflow: hidden;
-            padding: 10px;"> <br>    
+            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name"> <br>    
             <br> <p> RUNS AT YOUR LEVEL: <br><br>
               <% console.log(resorts[i].resort_name) %>
               <% for(let j = 0; j < runs.length; j++){ 
@@ -57,7 +54,5 @@
       <% } %>
     <% } %>
 </div>
-</body>
-
 
 <%- include ('../partials/footer') %>

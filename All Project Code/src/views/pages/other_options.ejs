@@ -1,7 +1,6 @@
-<%- include ('../partials/header') %>
 
 <%- include ('../partials/header') %>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
 <div class="accordion" id="accordionMainBody">
     <% for(let i=0; i<resorts.length; i++){ %>
     <% var rname = resorts[i].resort_name %>
@@ -51,8 +50,5 @@
       <% } %>
     <% } %>
 </div>
-</body>
-<%- include ('../partials/footer') %>
-
 
 <%- include ('../partials/footer') %>
