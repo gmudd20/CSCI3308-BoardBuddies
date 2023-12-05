@@ -2,7 +2,7 @@
 
 Here are the updates we have made since Thursday of last lab:
 
-Jenna: Functionality of profile page, got it to completely work. She added authentication malware in index.js, fixed profile in index.js. Did messages on the logout
+Jenna: Functionality of profile page, got it to completely work. She added authentication malware in index.js, fixed profile in index.js. Did messages on the logout. Added our logo to website. Did CSS for Login Page and About Us. 
 
 Caleb: Worked on index.js for your mountains. Got the query to work for displaying the information we wanted to. 
 
@@ -12,13 +12,13 @@ Alex: Helped Caleb with index.js for your mountains, as well as the index.js for
 
 Isabel: Worked on layout of about_us making it visually appealing and functional. Also worked on making the header/footer display correclty depending on if the user is logged in or not. Additionally worked on the profile page and the layout and how it displays the users information.
 
-
 Our plans for the next week:
 
 Report
 Presentation
 Add comments
 Practice presentation
+CSS for Register
 
 
 Below is the automated release notes created from github to show all of our changes from the last automated notes:
