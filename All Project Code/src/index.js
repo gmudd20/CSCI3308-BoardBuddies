@@ -14,6 +14,11 @@ function getSkills() {
   else return "Double Black"
 }
 
+function deleteUser() {
+  res.redirect('delete_user');
+  console.log("Deleting!");
+}
+
 // db config
 const dbConfig = {
   host: "db",
