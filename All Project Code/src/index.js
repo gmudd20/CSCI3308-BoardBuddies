@@ -71,6 +71,14 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('pages/register')
 });
+
+app.get('/register&message=:message', (req, res) => {
+  console.log(req.params.message)
+  res.render('pages/register', {message: req.params.message})
+});
+
+
+
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
@@ -178,14 +186,14 @@ app.post('/login', (req, res) =>{
 
   db.any(query, [username])
     .then(async user => {
-      if (!user) {
-        res.redirect('/register');
+      if (user.length === 0) {
+        res.redirect('/register&message=Username%20doesn%27t%20exist');
       }
       else {
         // check if password from request matches with password in DB
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if(!match) {
-          res.render('pages/login', {message: 'Incorrect username or password.', error: any});
+          res.render('pages/login', {message: 'Incorrect username or password.'});
         }
         else {
           req.session.user = user;
@@ -226,6 +234,35 @@ app.get('/your_mountains', (req,res)=>{
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
     // this might need to be const q2r = await idk.any(q2, req.session.user[0].pass);
+    const q2r = await idk.any(q2, req.session.user[0]['pass']);
+    return {q1r, q2r};
+  })
+  .then(data => {
+    console.log(data.q1r);
+    //console.log(data.q2r);
+    res.render("pages/your_mountains",{
+      runs: data.q1r,
+      resorts: data.q2r,
+    })
+  })
+  .catch((err)=>{
+    res.render("pages/your_mountains",{
+      resorts: [],
+      runs: [],
+      error: true,
+      message: err.message,
+    })
+  });
+ })
+
+ app.get('/other_options', (req,res)=>{
+  //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+  const q2 = `select * from resorts inner join users on resorts.required_pass != $1;`;
+  //'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+ 
+  db.task('get-data', async idk => {
+    const q1r = await idk.any(q1);
     const q2r = await idk.any(q2, req.session.user[0]['pass']);
     return {q1r, q2r};
   })
@@ -305,10 +342,23 @@ app.get('/runs', (req,res)=>{
   });
 });
 
-app.delete('/delete_user', function (req, res) {
+app.get('/delete_user', function (req, res) {
 
+  var username = req.session.user[0].username;
+  var user_query = `delete from users where username = '${username}';`;
+  db.any(user_query)
+
+  .then( (data)=> {
+    res.redirect('/register&message=Deleted%20profile%20successfully!');
+  })
+  .catch(function (err) { 
+    return console.log(err);
+  })
+});
+
+app.delete('/delete_account',function (req,res){
   var username = req.body.username;
-  var user_query = `delete from users where username = '${username}' cascade;`;
+  var user_query = `delete from users where username = '${req.session.username}' cascade;`;
   db.any(user_query)
 
   .then(function (data) {
@@ -323,7 +373,7 @@ app.delete('/delete_user', function (req, res) {
   .catch(function (err) {
     return console.log(err);
   })
-});
+})
 
 
 module.exports = app.listen(3000);
