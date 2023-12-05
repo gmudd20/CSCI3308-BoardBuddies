@@ -2,23 +2,22 @@
 
 Here are the updates we have made since Thursday of last lab:
 
-Jenna: Functionality of profile page, got it to completely work. She added authentication malware in index.js, fixed profile in index.js. Did messages on the logout
+Jenna: Functionality of profile page, got it to completely work. She added authentication malware in index.js, fixed profile in index.js. Did messages on the logout. Added our logo to website. Did CSS for Login Page and About Us. 
 
 Caleb: Worked on index.js for your mountains. Got the query to work for displaying the information we wanted to. 
 
-Grace: Finished the Read.Me, started the report and created the outline for everyone to work on it, lab 13 in entire part as it didn't work in Caleb's and mine barely worked, did the delete user functionality on nav bar, did messages for login, deleting profile, and register
+Grace: Finished the Read.Me, started the report and created the outline for everyone to work on it, lab 13 in entire part as it didn't work in Caleb's and mine barely worked, did the delete user functionality on nav bar, did messages for login, deleting profile, and register. Also did the log out functionality.
 
 Alex: Helped Caleb with index.js for your mountains, as well as the index.js for other options. Helped the query work correctly for both pages, as well as did the html to make it display the information in an accordian fashion.
 
 Isabel: Worked on layout of about_us making it visually appealing and functional. Also worked on making the header/footer display correclty depending on if the user is logged in or not. Additionally worked on the profile page and the layout and how it displays the users information.
 
-
 Our plans for the next week:
 
 Report
-Presentation
-Add comments
-Practice presentation
+Final Presentation
+Report
+Upload these deliverables
 
 
 Below is the automated release notes created from github to show all of our changes from the last automated notes:
