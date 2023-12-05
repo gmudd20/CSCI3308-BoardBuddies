@@ -37,8 +37,10 @@
         </h2>
         <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
           <div class="accordion-body"> 
-            <p>MAP: </p> <br>
-            <img id="resortMap" src="/img/'${rname}'.jpg" alt="YEA NAH"> <br>    
+            <p>MAP: </p>
+            <% var thing = '/img/' + rname +  '.jpg' %>
+            <% console.log(thing) %>
+            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name"> <br>    
             <br> <p> RUNS AT YOUR LEVEL: <br><br>
               <% console.log(resorts[i].resort_name) %>
               <% for(let j = 0; j < runs.length; j++){ 
