@@ -6,18 +6,22 @@ const session = require("express-session");
 var bcrypt = require('bcryptjs');
 
 // Goes in index.js at top
-function getSkills() {
-  diff = ""
-  if(x = 1) return diff = "Green"
-  else if(x = 2) return "Blue"
-  else if(x = 3) return "Black"
-  else return "Double Black"
-}
+// function getSkills() {
+//   diff = ""
+//   if(x = 1) return diff = "Green"
+//   else if(x = 2) return "Blue"
+//   else if(x = 3) return "Black"
+//   else return "Double Black"
+// }
 
-function deleteUser() {
-  res.redirect('delete_user');
-  console.log("Deleting!");
-}
+// function deleteUser() { 
+//   res.redirect('/delete_user');
+//   console.log("Deleting!");
+// }
+
+// var delete_button = document.getElementById("delete_user_button");
+
+// delete_button.addEventListener("click", deleteUser());
 
 // db config
 const dbConfig = {
@@ -243,7 +247,7 @@ app.get('/your_mountains', (req,res)=>{
     return {q1r, q2r};
   })
   .then(data => {
-    console.log(data.q1r);
+    //console.log(data.q1r);
     //console.log(data.q2r);
     res.render("pages/your_mountains",{
       runs: data.q1r,
@@ -293,10 +297,10 @@ app.get('/your_mountains', (req,res)=>{
 app.get('/profile', (req,res)=>{
   //fetch user information
   const query = 'select username, pass, skill_level from users where users.user_id = $1;';
-  console.log(req.session)
+  //console.log(req.session)
   db.any(query, req.session.user[0].user_id)
   .then((data) =>{
-    console.log(data);
+    //console.log(data);
     res.render("pages/profile",{
       username: data[0].username,
       pass: data[0].pass,
@@ -351,6 +355,7 @@ app.get('/delete_user', function (req, res) {
 
   var username = req.session.user[0].username;
   var user_query = `delete from users where username = '${username}';`;
+  console.log("DELETING!!!");
   db.any(user_query)
 
   .then( (data)=> {
@@ -367,9 +372,9 @@ app.delete('/delete_account',function (req,res){
   db.any(user_query)
 
   .then(function (data) {
-    console.log(data);
+    //console.log(data);
     var review_data = data[0]["user_id"];
-    console.log(review_data);
+    //console.log(review_data);
       res.status(200).json ({
         status: 'success',
         message: 'data deleted successfully',
