@@ -40,7 +40,10 @@
             <p>MAP: </p>
             <% var thing = '/img/' + rname +  '.jpg' %>
             <% console.log(thing) %>
-            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name"> <br>    
+            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; 
+            width: 800px;
+            overflow: hidden;
+            padding: 10px;"> <br>    
             <br> <p> RUNS AT YOUR LEVEL: <br><br>
               <% console.log(resorts[i].resort_name) %>
               <% for(let j = 0; j < runs.length; j++){ 
