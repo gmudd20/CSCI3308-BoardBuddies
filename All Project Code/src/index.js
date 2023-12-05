@@ -59,15 +59,7 @@ app.use(
     extended: true,
   })
 );
-// Authentication middleware.
-// const auth = (req, res, next) => {
-//   if (!req.session.user) {
-//     return res.redirect("/login");
-//   }
-//   next();
-// };
 
-//app.use(auth);
 
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
@@ -84,6 +76,14 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   res.render('pages/register')
 });
+
+app.get('/register&message=:message', (req, res) => {
+  console.log(req.params.message)
+  res.render('pages/register', {message: req.params.message})
+});
+
+
+
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
@@ -191,14 +191,14 @@ app.post('/login', (req, res) =>{
 
   db.any(query, [username])
     .then(async user => {
-      if (!user) {
-        res.redirect('/register');
+      if (user.length === 0) {
+        res.redirect('/register&message=Username%20doesn%27t%20exist');
       }
       else {
         // check if password from request matches with password in DB
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if(!match) {
-          res.render('pages/login', {message: 'Incorrect username or password.', error: any});
+          res.render('pages/login', {message: 'Incorrect username or password.'});
         }
         else {
           req.session.user = user;
@@ -220,6 +220,15 @@ app.post('/login', (req, res) =>{
   }
 });
 
+// Authentication middleware.
+const auth = (req, res, next) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  next();
+};
+
+app.use(auth);
 
 app.get('/your_mountains', (req,res)=>{
   //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
@@ -229,6 +238,7 @@ app.get('/your_mountains', (req,res)=>{
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
+    // this might need to be const q2r = await idk.any(q2, req.session.user[0].pass);
     const q2r = await idk.any(q2, req.session.user[0]['pass']);
     return {q1r, q2r};
   })
@@ -281,21 +291,42 @@ app.get('/your_mountains', (req,res)=>{
  
 
 app.get('/profile', (req,res)=>{
+  //fetch user information
   const query = 'select username, pass, skill_level from users where users.user_id = $1;';
-
-  db.any(query, req.session.user[0]['user_id'])
-  .then((resorts)=>{
+  console.log(req.session)
+  db.any(query, req.session.user[0].user_id)
+  .then((data) =>{
+    console.log(data);
     res.render("pages/profile",{
-      profile,
-    })
+      username: data[0].username,
+      pass: data[0].pass,
+      skill_level: data[0].skill_level
+    })  
   })
   .catch((err)=>{
+    console.log("error")
     res.render("pages/profile",{
-      resorts: [],
-      error: true,
-      message: err.message,
-    })
+      username: "",
+      pass: "",
+      skill_level: ""
+    }) 
   });
+  //display it when they click on it
+
+  // db.any(query, req.session.user[0]['user_id'])
+  // .then((resorts)=>{
+  //   res.render("pages/profile",{
+  //     username: req.session.user.username,
+  //     profile,
+  //   })
+  // })
+  // .catch((err)=>{
+  //   res.render("pages/profile",{
+  //     resorts: [],
+  //     error: true,
+  //     message: err.message,
+  //   })
+  // });
 });
 
 app.get('/runs', (req,res)=>{
@@ -316,13 +347,23 @@ app.get('/runs', (req,res)=>{
   });
 });
 
+app.get('/delete_user', function (req, res) {
 
+  var username = req.session.user[0].username;
+  var user_query = `delete from users where username = '${username}';`;
+  db.any(user_query)
 
+  .then( (data)=> {
+    res.redirect('/register&message=Deleted%20profile%20successfully!');
+  })
+  .catch(function (err) { 
+    return console.log(err);
+  })
+});
 
-app.delete('/delete_user', function (req, res) {
-
+app.delete('/delete_account',function (req,res){
   var username = req.body.username;
-  var user_query = `delete from users where username = '${username}' cascade;`;
+  var user_query = `delete from users where username = '${req.session.username}' cascade;`;
   db.any(user_query)
 
   .then(function (data) {
@@ -337,7 +378,7 @@ app.delete('/delete_user', function (req, res) {
   .catch(function (err) {
     return console.log(err);
   })
-});
+})
 
 
 module.exports = app.listen(3000);
