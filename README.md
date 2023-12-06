@@ -32,4 +32,4 @@ In your terminal, run the statementl "docker compose up". Using our docker.compo
 Add "npm run prestart && npm run test && npm start" for the "testandrun" part in the debug part of the docker-compose.yaml file
 
 ## Link to the deployed application
-TBD
+http://recitation-011-team-05-a.eastus.cloudapp.azure.com:3000/login
