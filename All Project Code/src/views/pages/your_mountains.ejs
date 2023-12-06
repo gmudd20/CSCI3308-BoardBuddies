@@ -29,6 +29,7 @@
         console.log(blueCount);
         console.log(blackCount);
         console.log(dblBlackCount); %>
+        <% var thing = '/img/' + rname +  '.jpg' %>
       <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-heading<%=i%>">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=i%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=i%>">
@@ -36,26 +37,27 @@
           </button>
         </h2>
         <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
-          <div class="accordion-body"> 
-            <p>MAP: </p>
-            <% var thing = '/img/' + rname +  '.jpg' %>
-            <% console.log(thing) %>
-            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; 
-            width: 800px;
-            overflow: hidden;
-            padding: 10px;"> <br>    
-            <br> <p> RUNS AT YOUR LEVEL - <%= level %> AND BELOW: <br><br>
-              <% console.log(resorts[i].resort_name) %>
-              <% for(let j = 0; j < runs.length; j++){ 
-                if (runs[j].resort_name == rname && level >= runs[j].skill_level) { %>
-                  <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
-                <% } %>
-              <% } %> </p>
+          <div class="accordion-body">
+            <div class="container center" id="container-list-img" style="display: flex; flex-direction: row; justify-content: space-between;">
+              <div id="list">
+                <p>NUMBER OF - Greens: <%=greenCount%> Blues: <%=blueCount%> Blacks: <%=blackCount%> Double Blacks: <%=dblBlackCount%></p>
+                <p> RUNS AT YOUR LEVEL - <%= level %> AND BELOW: <br>
+                  <% console.log(resorts[i].resort_name) %>
+                  <% for(let j = 0; j < runs.length; j++){ 
+                    if (runs[j].resort_name == rname && level >= runs[j].skill_level) { %>
+                      <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
+                    <% } %>
+                  <% } %> </p>
+              </div>
+              <div id="img-thang">
+                <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; width: 800px; overflow: hidden; padding: 10px; float: right;"> <br>    
               </div>
             </div>
           </div>
-      <% } %>
+        </div>
+      </div>
     <% } %>
+  <% } %>
 </div>
 
 <%- include ('../partials/footer') %>
