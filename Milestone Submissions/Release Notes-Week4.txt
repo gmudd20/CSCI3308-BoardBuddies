@@ -16,12 +16,12 @@ Our plans for the next week:
 
 Report
 Final Presentation
-Report
+Comments
 Upload these deliverables
 
 
 Below is the automated release notes created from github to show all of our changes from the last automated notes:
-https://github.com/gmudd20/CSCI3308-BoardBuddies/releases/tag/Week3Automated 
+https://github.com/gmudd20/CSCI3308-BoardBuddies/releases/tag/Week4Automated
 
 Below is the full change log:
-https://github.com/gmudd20/CSCI3308-BoardBuddies/compare/Week2Automated...Week3Automated
+https://github.com/gmudd20/CSCI3308-BoardBuddies/compare/Week3Automated...Week4Automated
