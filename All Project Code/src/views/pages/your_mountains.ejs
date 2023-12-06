@@ -3,7 +3,7 @@
 
 <div class="accordion" id="accordionMainBody">
     <% for(let i=0; i<resorts.length; i++){ %>
-    <% var rname = resorts[i].resort_name %> 
+    <% var rname = resorts[i].resort_name %>
     <% if(i == 0 || resorts[i].resort_name != resorts[i - 1].resort_name) { %>
       <% var greenCount = 0;
          var blueCount = 0;
@@ -44,10 +44,10 @@
             width: 800px;
             overflow: hidden;
             padding: 10px;"> <br>    
-            <br> <p> RUNS AT YOUR LEVEL: <br><br>
+            <br> <p> RUNS AT YOUR LEVEL - <%= level %> AND BELOW: <br><br>
               <% console.log(resorts[i].resort_name) %>
               <% for(let j = 0; j < runs.length; j++){ 
-                if (runs[j].resort_name == rname && (resorts[i].skill_level >= runs[j].skill_level)) { %>
+                if (runs[j].resort_name == rname && level >= runs[j].skill_level) { %>
                   <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
                 <% } %>
               <% } %> </p>

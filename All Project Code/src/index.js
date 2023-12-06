@@ -19,6 +19,15 @@ var bcrypt = require('bcryptjs');
 //   console.log("Deleting!");
 // }
 
+// function getSkillLevel() {
+//   return req.session.user[0]['skill_level'];
+// }
+
+// var myScripts = require('/path/to/myScripts');
+// res.render('template', {
+//     utils: myScripts
+// });
+
 // var delete_button = document.getElementById("delete_user_button");
 
 // delete_button.addEventListener("click", deleteUser());
@@ -244,7 +253,7 @@ app.get('/your_mountains', (req,res)=>{
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
     // this might need to be const q2r = await idk.any(q2, req.session.user[0].pass);
-    const q2r = await idk.any(q2, req.session.user[0]['pass']);
+    const q2r = await idk.any(q2, req.session.user[0].pass);
     return {q1r, q2r};
   })
   .then(data => {
@@ -253,6 +262,7 @@ app.get('/your_mountains', (req,res)=>{
     res.render("pages/your_mountains",{
       runs: data.q1r,
       resorts: data.q2r,
+      level: req.session.user[0].skill_level,
     })
   })
   .catch((err)=>{
@@ -273,7 +283,7 @@ app.get('/your_mountains', (req,res)=>{
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
-    const q2r = await idk.any(q2, req.session.user[0]['pass']);
+    const q2r = await idk.any(q2, req.session.user[0].pass);
     return {q1r, q2r};
   })
   .then(data => {
@@ -282,6 +292,7 @@ app.get('/your_mountains', (req,res)=>{
     res.render("pages/your_mountains",{
       runs: data.q1r,
       resorts: data.q2r,
+      level: req.session.user[0].skill_level
     })
   })
   .catch((err)=>{

@@ -42,7 +42,7 @@ describe('Server!', () => {
   //We are checking POST /add_user API by passing the user info in in incorrect manner (name cannot be an integer). This test case should pass and return a status 200 along with a "Invalid input" message.
   it('Negative : /login. Checking invalid login', done => {
     chai
-      .rsequest(server)
+      .request(server)
       .post('/login')
       .send({username: 'Not John', password: 'badpassword5'})
       .end((err, res) => {
