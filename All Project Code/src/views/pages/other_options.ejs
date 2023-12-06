@@ -1,61 +1,77 @@
 
 <%- include ('../partials/header') %>
-
+<!-- Main accordian class div -->
 <div class="accordion" id="accordionMainBody">
-    <% for(let i=0; i<resorts.length; i++){ %>
+  <!-- For every resort in object passed: -->
+  <% for(let i=0; i<resorts.length; i++){ %>
+    <!-- Save resort name (used for pics and accordian)  -->
     <% var rname = resorts[i].resort_name %>
-    <% if(i == 0 || resorts[i].resort_name != resorts[i - 1].resort_name) { %>
+    <!-- Count all the types of runs (in our db) for resort -->
+    <% if(i == 0 || rname != resorts[i - 1].resort_name) { %>
       <% var greenCount = 0;
-         var blueCount = 0;
-         var blackCount = 0;
-         var dblBlackCount = 0;
-         for (let g = 0; g < runs.length; g++) {
-           if (runs[g].resort_name == rname) {
-             if (runs[g].skill_level == 1) {
-               greenCount ++;
-             }
-             if (runs[g].skill_level == 2) {
-               blueCount ++;
-             }
-             if (runs[g].skill_level == 3) {
+        var blueCount = 0;
+        var blackCount = 0;
+        var dblBlackCount = 0;
+        for (let g = 0; g < runs.length; g++) {
+          if (runs[g].resort_name == rname) {
+            if (runs[g].skill_level == 1) {
+              greenCount ++;
+            }
+            if (runs[g].skill_level == 2) {
+              blueCount ++;
+            }
+            if (runs[g].skill_level == 3) {
               blackCount ++;
             }
             if (runs[g].skill_level == 4) {
               dblBlackCount ++;
             }
-           }
-         }
+          }
+        }
+        <!-- Double check accuracy -->
         console.log(greenCount);
         console.log(blueCount);
         console.log(blackCount);
         console.log(dblBlackCount); %>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-heading<%=i%>">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=i%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=i%>">
-            <%= rname %>  -  ELEVATION: <%= resorts[i].elevation %> FT
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
-          <div class="accordion-body"> 
-            <p>MAP: </p>
-            <% var thing = '/img/' + rname +  '.jpg' %>
-            <% console.log(thing) %>
-            <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; 
-            width: 800px;
-            overflow: hidden;
-            padding: 10px;"> <br>    
-            <br> <p> RUNS AT YOUR LEVEL - <%= level %> AND BELOW: <br><br>
-              <% console.log(resorts[i].resort_name) %>
-              <% for(let j = 0; j < runs.length; j++){ 
-                if (runs[j].resort_name == rname && level >= runs[j].skill_level) { %>
-                  <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
-                <% } %>
-              <% } %> </p>
+
+        <!-- Get path for each resort image -->
+        <% var thing = '/img/' + rname +  '.jpg' %>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-heading<%=i%>">
+            <!-- Dropdown with resort name and elevation -->
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=i%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=i%>">
+              <%= rname %>  -  ELEVATION: <%= resorts[i].elevation %> FT
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapse<%=i%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=i %>" data-bs-parent="#accordionMainBody">
+            <div class="accordion-body">
+              <div class="container center" id="container-list-img" style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div id="list">
+                  <!-- Display all relevant info -->
+                  <p> NUMBER OF - Greens: <%=greenCount%> Blues: <%=blueCount%> Blacks: <%=blackCount%> Double Blacks: <%=dblBlackCount%></p>
+                  <p> RUNS AT YOUR LEVEL - <%= level %> AND BELOW: <br>
+                  <% console.log(resorts[i].resort_name) %>
+                  <!-- All runs associated with resort -->
+                  <% for(let j = 0; j < runs.length; j++){ 
+                    if (runs[j].resort_name == rname && level >= runs[j].skill_level) { %>
+                      <%= runs[j].run_name %> - LEVEL: <%= runs[j].skill_level %> <br>
+                    <% } %>
+                  <% } %> </p>
+                </div>
+                <!-- Map -->
+                <div id="img-thang">
+                  <img id="resortMap" src="<%=thing %>" alt="resorts[i].resort_name" style="margin: auto; width: 800px; overflow: hidden; padding: 10px; float: right;"> <br>    
+               </div>
               </div>
             </div>
           </div>
-      <% } %>
+        </div>
     <% } %>
+  <% } %>  
+</div>
+
+<div class="card-text text-white" style="margin-top: 10px; margin-bottom: 20px;">
+  <p> Secret Powder Stash </p>
 </div>
 
 <%- include ('../partials/footer') %>
