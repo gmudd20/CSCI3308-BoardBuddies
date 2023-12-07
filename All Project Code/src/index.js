@@ -5,32 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 var bcrypt = require('bcryptjs');
 
-// Goes in index.js at top
-// function getSkills() {
-//   diff = ""
-//   if(x = 1) return diff = "Green"
-//   else if(x = 2) return "Blue"
-//   else if(x = 3) return "Black"
-//   else return "Double Black"
-// }
 
-// function deleteUser() { 
-//   res.redirect('/delete_user');
-//   console.log("Deleting!");
-// }
-
-// function getSkillLevel() {
-//   return req.session.user[0]['skill_level'];
-// }
-
-// var myScripts = require('/path/to/myScripts');
-// res.render('template', {
-//     utils: myScripts
-// });
-
-// var delete_button = document.getElementById("delete_user_button");
-
-// delete_button.addEventListener("click", deleteUser());
 
 // db config
 const dbConfig = {
@@ -75,76 +50,50 @@ app.use(
 );
 
 
+// For testing
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
 });
-
+// Default to the /login endpoint
 app.get('/', (req, res) => {
   res.redirect('/login'); 
 });
-
+// Render login page
 app.get('/login', (req, res) => {
   res.render('pages/login');
 });
-
+// Render register page
 app.get('/register', (req, res) => {
   res.render('pages/register')
 });
-
+// Handle the case where user deletes their profile and a message is sent
 app.get('/register&message=:message', (req, res) => {
   console.log(req.params.message)
   res.render('pages/register', {message: req.params.message})
 });
-
-
-
+// Render about us page
 app.get('/about_us', (req, res) => {
   res.render('pages/about_us')
 });
+// Destroy session on logout and displays message
 app.get('/logout', (req, res) => {
   req.session.destroy();
+  // Render login page
   res.render('pages/login',{message: 'Logged out successfully!'})
-  // res.render('pages/register')
-  //res.render('pages/register')
 });
-// app.post('/register', async (req, res) => {
-//   try {
-//       //hash the password using bcrypt library
-//       const hash = await bcrypt.hash(req.body.password, 10);
-    
-//       // To-DO: Insert username and hashed password into 'users' table
-//       var testQuery = `select username from users where username = '${req.body.username}'`;
-//       const testUser = await db.any(testQuery);
-//       console.log('testUser:');
-//       console.log(testUser[0]);
-//       if (testUser[0] === undefined) {
-//         var userQuery = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
-//         const user = await db.any(userQuery,[req.body.username, hash, req.body.pass, req.body.skill]);
-//         res.redirect('/login')
-//       }
-//       else {
-//         res.redirect('/register')
-//       }
-
-//   } catch (error) {
-//       console.log(error);
-//       res.render('pages/register', {
-//             message: 'Invalid input',
-//           error: true
-//      }); 
-//   }
-// });
+// Website registration
 app.post('/register', async (req, res) => {
   //hash the password using bcrypt library
   try{
   const hash = await bcrypt.hash(req.body.password, 10);
 
-  // To-DO: Insert username and hashed password into 'users' table
+  // Insert username, hashed password, pass, and skill level into 'users' table
   const username = req.body.username;
   const query = `insert into users (username, password, pass, skill_level) values ($1, $2, $3, $4) returning *;`;
 
   db.any(query, [username, hash, req.body.pass, req.body.skill])
     .then(data => {
+          // Redirect to login if registration is successful
           console.log('Succesfully registered user.', data);
           res.redirect('/login');
     })
@@ -160,44 +109,7 @@ app.post('/register', async (req, res) => {
 
 
 
-// app.post('/login', async (req, res) => {
-//   try {
-//       // user from the users table where the username is the same as the one entered by the user.
-//       var userQuery = `select password from users where username = '${req.body.username}'`;
-  
-//       const user = await db.any(userQuery)
-//       console.log(userQuery);
-//       console.log(req.body.password);
-//       //console.log(user[0].username);
-//       // check if password from request matches with password in DB
-//       // const match = await bcrypt.compare(req.body.password, user[0].password);
-//       if (!(user[0] === undefined) && req.body.password == user[0].password){
-//           //save user details in session
-//           req.session.user = user;
-//           req.session.save();
-//           // res.status(200).json({
-//           //   status: 'success',
-//           //   message: 'Success',
-//           // }); 
-//           // res.render('src/views/pages/your_mountain');
-//           res.render('pages/your_mountain', {
-//             message: 'Invalid input',
-//             error: true
-//           });
-//       }
-//       else{
-//           console.log('Incorrect username or password.');
-//           res.render('pages/login', {
-//               message: 'Invalid input',
-//               error: true
-//           }); 
-//       }
-
-//   } catch (error) {
-//       console.log(error);
-//       res.redirect('/register')
-//   }
-// });
+// Website login
 app.post('/login', (req, res) =>{
   try{
     const username = req.body.username;
@@ -205,6 +117,7 @@ app.post('/login', (req, res) =>{
 
   db.any(query, [username])
     .then(async user => {
+      // Redirect to register if login information is not found in the db
       if (user.length === 0) {
         res.redirect('/register&message=Username%20doesn%27t%20exist');
       }
@@ -215,6 +128,7 @@ app.post('/login', (req, res) =>{
           res.render('pages/login', {message: 'Incorrect username or password.'});
         }
         else {
+          // Save user information to session and render your mountains page if successful
           req.session.user = user;
           req.session.save();
           res.redirect('/your_mountains'); 
@@ -243,22 +157,20 @@ const auth = (req, res, next) => {
 };
 
 app.use(auth);
-
+// Your mountains page
 app.get('/your_mountains', (req,res)=>{
-  //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+  // Get all information on runs grouped by resorts
   const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+  // Get all resorts that correspond to user's pass
   const q2 = `select * from resorts inner join users on resorts.required_pass = $1;`;
-  //'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
-    // this might need to be const q2r = await idk.any(q2, req.session.user[0].pass);
     const q2r = await idk.any(q2, req.session.user[0].pass);
     return {q1r, q2r};
   })
   .then(data => {
-    //console.log(data.q1r);
-    //console.log(data.q2r);
+    // Render page with data
     res.render("pages/your_mountains",{
       runs: data.q1r,
       resorts: data.q2r,
@@ -274,12 +186,12 @@ app.get('/your_mountains', (req,res)=>{
     })
   });
  })
-
+// Other options page
  app.get('/other_options', (req,res)=>{
-  //const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id;';
+   // Get all information on runs grouped by resorts
   const q1 = 'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
+  // Get all resorts that don't correspond to user's pass
   const q2 = `select * from resorts inner join users on resorts.required_pass != $1;`;
-  //'select * from runs inner join resorts_to_runs on resorts_to_runs.run_id=runs.run_id join resorts on resorts_to_runs.resort_id = resorts.resort_id;';
  
   db.task('get-data', async idk => {
     const q1r = await idk.any(q1);
@@ -288,7 +200,7 @@ app.get('/your_mountains', (req,res)=>{
   })
   .then(data => {
     console.log(data.q1r);
-    //console.log(data.q2r);
+    // Render page with queried information
     res.render("pages/your_mountains",{
       runs: data.q1r,
       resorts: data.q2r,
@@ -305,19 +217,18 @@ app.get('/your_mountains', (req,res)=>{
   });
  })
  
-
+//Profile
 app.get('/profile', (req,res)=>{
-  //fetch user information
+  //fetch user information using the user saved in session
   const query = 'select username, pass, skill_level from users where users.user_id = $1;';
-  //console.log(req.session)
   db.any(query, req.session.user[0].user_id)
   .then((data) =>{
-    //console.log(data);
+    // Render page with information stored in variables
     res.render("pages/profile",{
       username: data[0].username,
       pass: data[0].pass,
-      skill_level: data[0].skill_level
-    })  
+      skill_level: data[0].skill_level,
+    });  
   })
   .catch((err)=>{
     console.log("error")
@@ -327,76 +238,24 @@ app.get('/profile', (req,res)=>{
       skill_level: ""
     }) 
   });
-  //display it when they click on it
-
-  // db.any(query, req.session.user[0]['user_id'])
-  // .then((resorts)=>{
-  //   res.render("pages/profile",{
-  //     username: req.session.user.username,
-  //     profile,
-  //   })
-  // })
-  // .catch((err)=>{
-  //   res.render("pages/profile",{
-  //     resorts: [],
-  //     error: true,
-  //     message: err.message,
-  //   })
-  // });
 });
 
-app.get('/runs', (req,res)=>{
-  var resort = req.body.resort;
-  const query = `select * from resorts_to_runs inner join runs on resorts_to_runs.resort_id='${resort}'.resort_id`
-  db.any(query)
-  .then((resorts)=>{
-    res.render("pages/your_mountains",{
-      resorts,
-    });
-  })
-  .catch((err)=>{
-    res.render("pages/your_mountains",{
-      resorts: [],
-      error: true,
-      message: err.message,
-    })
-  });
-});
-
+// Delete you account
 app.get('/delete_user', function (req, res) {
-
+  // Delete the information in the database corresponding to the user saved in session
   var username = req.session.user[0].username;
   var user_query = `delete from users where username = '${username}';`;
   console.log("DELETING!!!");
   db.any(user_query)
 
   .then( (data)=> {
+    // Redirect to register with a message
     res.redirect('/register&message=Deleted%20profile%20successfully!');
   })
   .catch(function (err) { 
     return console.log(err);
   })
 });
-
-app.delete('/delete_account',function (req,res){
-  var username = req.body.username;
-  var user_query = `delete from users where username = '${req.session.username}' cascade;`;
-  db.any(user_query)
-
-  .then(function (data) {
-    //console.log(data);
-    var review_data = data[0]["user_id"];
-    //console.log(review_data);
-      res.status(200).json ({
-        status: 'success',
-        message: 'data deleted successfully',
-      })
-  })
-  .catch(function (err) {
-    return console.log(err);
-  })
-})
-
 
 module.exports = app.listen(3000);
 console.log("Server is listening on port 3000");
