@@ -2,6 +2,7 @@
 <%- include ('../partials/message')%> 
 <main>
     <style>
+        /* css */
         .card{
             margin-bottom: 30px;
             margin-top: 40px;
@@ -9,33 +10,30 @@
             margin-left: 45px;
         }
     </style>
-
     <div class="card mb-3">
         <div class="row g-0 d-flex align-items-center">
             <div class="col-lg-3 d-none d-md-flex">
+                <!-- Steezy Skier Pic -->
                 <img src="https://stokedrideshop.com/cdn/shop/articles/Freestyle_Skiing.jpg?v=1662060036"
                   alt="login form" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
             </div>
           <div class="col-lg-8">
             <div class="card-body py-4 px-md-5">
-
+                        <!-- title -->
                         <h4 class="mb-2" style="letter-spacing: 1px;">Sign into your account</h5>
-
                         <form action="/login" method="POST"><br>
-                            <!-- <label for="username">Username: </label><br>
-                            <input type="text" id="username" name="username"><br>
-                            <label for="password">Password: </label><br>
-                            <input type="password" id="password" name="password">   
-                            <button class="Submit" type="submit">Login</button> -->
+                            <!-- username input box -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" id="usernam_text" for="username">Username</label>
                                 <input type="text" id="username" name="username" class="form-control" />
                             </div>
+                            <!-- password input box -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" id="password_text" for="password">Password</label>
                                 <input type="password" id="password" name="password" class="form-control" />
                                 
                             </div>
+                            <!-- Sign in button -->
                             <button type="submit" class="btn btn-primary btn-block m-b-10">Sign in</button>
                         </form>
 
